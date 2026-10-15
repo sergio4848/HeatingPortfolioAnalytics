@@ -33,3 +33,5 @@ Quality implementation b831a68 passed the expanded Linux/PostgreSQL GitHub workf
 
 ## Desktop/mobile follow-up
 All seven views manually inspected in the running browser; extended overflow matrix covers 1440/1024/390/360px. Final local suite: 15/15 browser tests, 10/10 frontend tests, typecheck/build/format passed. Detailed findings, fixes and actual screenshots: ui-review/README.md. No Python changes in this follow-up; the full suite runs again in GitHub CI.
+
+Desktop/mobile implementation 9895370 passed GitHub Actions run 38745310633: 43 Python, 10 frontend and 15 browser tests, PostgreSQL migration/repeated seed and browser evidence upload successful. Actual metadata: ui-review/github-actions.json.

@@ -1,0 +1,114 @@
+{
+  "observed_at": "2026-10-15T13:47:34.4085202Z",
+  "run_id": 38745310633,
+  "url": "https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38745310633",
+  "head_sha": "98953704c2184c81ecfde1dc16f391dda943644b",
+  "branch": "feat/latvia-pilot-demo",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 116457305019,
+      "name": "local-demo",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Python dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Python lint and tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Migrate and verify idempotent seed",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Web typecheck, build, tests and formatting",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Chromium",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Start demo API",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Wait for healthy API",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Browser journeys and accessibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve browser evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}
