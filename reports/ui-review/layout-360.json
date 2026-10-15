@@ -1,0 +1,44 @@
+[
+  {
+    "screen": "home",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "portfolio",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "building",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "import",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "tasks",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "interventions",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "settings",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  }
+]

@@ -64,5 +64,6 @@ jobs:
             reports/e2e-results.json
             reports/screenshots/
             reports/accessibility/
+            reports/ui-review/
             apps/web/test-results/
           retention-days: 7

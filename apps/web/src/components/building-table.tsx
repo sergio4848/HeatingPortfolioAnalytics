@@ -190,6 +190,7 @@ export function BuildingTable({
           <Search size={16} />
           <input
             type="search"
+            maxLength={120}
             aria-label="Search buildings"
             placeholder="Search name, ID or type…"
             value={query}
@@ -197,7 +198,15 @@ export function BuildingTable({
           />
         </label>
       </div>
-      <div className="table-wrap">
+      <p className="table-scroll-hint">
+        Swipe or scroll horizontally to see all columns.
+      </p>
+      <div
+        className="table-wrap"
+        role="region"
+        aria-label="Building findings table"
+        tabIndex={0}
+      >
         <table>
           <caption className="sr-only">
             Synthetic buildings and investigation evidence. Sort using column

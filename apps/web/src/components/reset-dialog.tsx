@@ -6,7 +6,13 @@ export function ResetDialog({ onReset }: { onReset: () => Promise<void> }) {
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   return (
-    <AlertDialog.Root open={open} onOpenChange={setOpen}>
+    <AlertDialog.Root
+      open={open}
+      onOpenChange={(next) => {
+        setOpen(next);
+        if (next) setError("");
+      }}
+    >
       <AlertDialog.Trigger asChild>
         <button className="text-button">
           <RotateCcw size={14} /> Reset my demo

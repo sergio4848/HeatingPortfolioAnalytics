@@ -1,0 +1,44 @@
+[
+  {
+    "screen": "home",
+    "viewport": 390,
+    "document": 390,
+    "body": 390
+  },
+  {
+    "screen": "portfolio",
+    "viewport": 390,
+    "document": 390,
+    "body": 390
+  },
+  {
+    "screen": "building",
+    "viewport": 390,
+    "document": 390,
+    "body": 390
+  },
+  {
+    "screen": "import",
+    "viewport": 390,
+    "document": 390,
+    "body": 390
+  },
+  {
+    "screen": "tasks",
+    "viewport": 390,
+    "document": 390,
+    "body": 390
+  },
+  {
+    "screen": "interventions",
+    "viewport": 390,
+    "document": 390,
+    "body": 390
+  },
+  {
+    "screen": "settings",
+    "viewport": 390,
+    "document": 390,
+    "body": 390
+  }
+]

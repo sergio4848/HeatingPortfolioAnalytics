@@ -30,3 +30,6 @@ reports/accessibility/axe-1440.json and axe-390.json contain actual scans of lan
 Revised deck: Portotherm-LIAA-quality.pptx/pdf, same twelve-slide structure and editable text/notes, updated actual product screenshots. Finalizer again reports integrity/layout/font checks passed, 99 Arial uses, no findings, successful re-import. Unchanged native PDF limitation and fallback described above. Quality revision remote CI result is recorded in STATUS after observation.
 
 Quality implementation b831a68 passed the expanded Linux/PostgreSQL GitHub workflow: https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38729923038. Actual run/step metadata is preserved in github-actions-quality.json. No failed step remains in that run.
+
+## Desktop/mobile follow-up
+All seven views manually inspected in the running browser; extended overflow matrix covers 1440/1024/390/360px. Final local suite: 15/15 browser tests, 10/10 frontend tests, typecheck/build/format passed. Detailed findings, fixes and actual screenshots: ui-review/README.md. No Python changes in this follow-up; the full suite runs again in GitHub CI.

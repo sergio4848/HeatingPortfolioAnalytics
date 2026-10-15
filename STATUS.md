@@ -13,7 +13,7 @@ Branch: feat/latvia-pilot-demo. Original remote: https://github.com/sergio4848/H
 ## Verified
 - 43 Python tests pass on Windows; the prior 39-test baseline also passed in the Linux container (one upstream TestClient deprecation warning).
 - 10 frontend tests pass; typecheck/production build, Python lint and Prettier check pass.
-- 9 Playwright tests pass against PostgreSQL Compose, including journeys, routing, sorting/search/pagination, report period, reset focus, error handling and desktop/mobile automated accessibility. The earlier 4-test baseline also passed with SQLite.
+- 15 Playwright tests pass against PostgreSQL Compose, including journeys, routing, sorting/search/pagination, report period, reset focus, error handling and desktop/mobile automated accessibility. The earlier 4-test baseline also passed with SQLite.
 - Docker Compose build/start completed; app+PostgreSQL healthy, Alembic 001 head, repeated seed non-destructive. Application remains on 127.0.0.1:8000.
 - All 12 slides and five standalone PDF pages rendered/visually inspected; matching deck PDF 12 pages. Finalizer passes integrity/layout/font/re-import. Native PDF exporter lacked a bundled font module, so exact rendered slides form the PDF fallback. PPTX editable. No native PowerPoint run claimed.
 
@@ -42,3 +42,8 @@ The earlier automatic-review upload block was superseded by the user's explicit 
 The real-data pilot and production gates above remain open. Product quality improvements do not establish field results or production readiness.
 
 Final visual polish: short workspace pages now align at the top rather than vertically centering. PostgreSQL browser suite rerun after this CSS fix; 9/9 passed. The documentation commit 0fd7ac6 also passed Actions run 38730245379.
+
+## Desktop/mobile review — 2026-10-15
+Opened and operated all seven screens in the browser at desktop/mobile sizes, including forms, mapping/validation, audit and reset dialog. Fixed compact full-width forms, mobile date/filter layout and control sizing, 360px action overflow, mobile reset access, stale client preview/file cleanup, task-editor empty state, audit loading/empty/readable states and table scroll discoverability.
+
+Verification: 15/15 Playwright tests passed; all seven screens fit 1440/1024/390/360px (28 combinations). Typecheck/build, 10 frontend tests, Prettier and desktop/mobile axe scans passed. Evidence: reports/ui-review/README.md, screenshots/layout JSON and reports/e2e-results.json. Browser console inspection found no captured errors. Physical devices/native Safari and independent accessibility review are not claimed. Same-branch push and latest remote Actions verification are the final delivery steps.

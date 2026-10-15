@@ -2,6 +2,7 @@ import "@fontsource-variable/inter";
 import { BuildingTable } from "./components/building-table";
 import { ResetDialog } from "./components/reset-dialog";
 import { ErrorBoundary } from "./components/error-boundary";
+import { AuditTrail, type AuditEntry } from "./components/audit-trail";
 import { useRoute } from "./hooks/use-route";
 import {
   DEFAULT_RANGE,
@@ -49,6 +50,7 @@ function App() {
   const [appliedRange, setAppliedRange] = useState<DateRange>(DEFAULT_RANGE);
   const [query, setQuery] = useState("");
   const loadSequence = useRef(0);
+  const fileInput = useRef<HTMLInputElement>(null);
   const [data, setData] = useState<Portfolio | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
@@ -63,7 +65,7 @@ function App() {
     [mapping, setMapping] = useState<Record<string, string>>({}),
     [policy, setPolicy] = useState("reject");
   const [task, setTask] = useState<Task | null>(null),
-    [audit, setAudit] = useState<unknown[]>([]);
+    [audit, setAudit] = useState<AuditEntry[] | null>(null);
   const [orgName, setOrgName] = useState(""),
     [threshold, setThreshold] = useState(0.2);
   const [intervention, setIntervention] = useState({
@@ -96,6 +98,17 @@ function App() {
     } finally {
       setBusy(false);
     }
+  }
+  async function resetDemo() {
+    await api("/reset", { method: "POST" });
+    await load();
+    setTask(null);
+    setPreview(null);
+    setFile(null);
+    if (fileInput.current) fileInput.current.value = "";
+    setMapping({});
+    setAudit(null);
+    setToast("Your isolated demo session has been reset.");
   }
   useEffect(() => {
     void run(async () => {
@@ -423,13 +436,7 @@ function App() {
                 <br />
                 Provisional brand
               </small>
-              <ResetDialog
-                onReset={async () => {
-                  await api("/reset", { method: "POST" });
-                  await load();
-                  setToast("Your isolated demo session has been reset.");
-                }}
-              />
+              <ResetDialog onReset={resetDemo} />
             </div>
           </aside>
           <main className="app-main" id="main-content" tabIndex={-1}>
@@ -530,6 +537,12 @@ function App() {
                     </select>
                   </label>
                 </div>
+                {(start !== appliedRange.start || end !== appliedRange.end) && (
+                  <p className="period-pending" role="status">
+                    Period changes are not applied yet. Apply the period to
+                    update the view and reports.
+                  </p>
+                )}
                 <section className="metrics" aria-label="Portfolio summary">
                   {[
                     [
@@ -860,6 +873,7 @@ function App() {
                     <strong>Choose your consumption file</strong>
                     <input
                       aria-label="Consumption file"
+                      ref={fileInput}
                       type="file"
                       accept=".csv,.xlsx"
                       onChange={(e) => {
@@ -1198,7 +1212,7 @@ function App() {
                       </details>
                     </article>
                   ))}
-                  {!data?.tasks.length && (
+                  {!task && !data?.tasks.length && (
                     <div className="panel empty">
                       <ClipboardList size={36} />
                       <h2>No reviews assigned yet</h2>
@@ -1519,19 +1533,26 @@ function App() {
                   </p>
                   <button
                     className="secondary"
+                    disabled={busy}
                     onClick={() =>
                       void run(async () =>
-                        setAudit(await api<unknown[]>("/audit")),
+                        setAudit(await api<AuditEntry[]>("/audit")),
                       )
                     }
                   >
-                    Load audit trail
+                    {audit === null
+                      ? "Load audit trail"
+                      : "Refresh audit trail"}
                   </button>
-                  <pre className="audit">
-                    {audit.length
-                      ? JSON.stringify(audit, null, 2)
-                      : "No audit entries loaded."}
-                  </pre>
+                  <AuditTrail entries={audit} />
+                </section>
+                <section className="panel mobile-reset">
+                  <h2>Demo workspace</h2>
+                  <p>
+                    Restore the original synthetic portfolio and remove this
+                    session’s imported records, tasks and notes.
+                  </p>
+                  <ResetDialog onReset={resetDemo} />
                 </section>
               </>
             )}
