@@ -40,3 +40,5 @@ The earlier automatic-review upload block was superseded by the user's explicit 
 - Strengthened CI with PostgreSQL, migrations/repeated seed, Node 24, pinned action commits and retained browser evidence. Quality revision b831a68 pushed and remote CI passed: https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38729923038. PostgreSQL migration/seed, Python checks, web checks and Chromium/axe completed successfully. Evidence: reports/github-actions-quality.json.
 
 The real-data pilot and production gates above remain open. Product quality improvements do not establish field results or production readiness.
+
+Final visual polish: short workspace pages now align at the top rather than vertically centering. PostgreSQL browser suite rerun after this CSS fix; 9/9 passed. The documentation commit 0fd7ac6 also passed Actions run 38730245379.

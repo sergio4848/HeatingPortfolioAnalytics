@@ -340,6 +340,7 @@ aside nav button.active svg {
 .app-main {
   padding: 0 34px;
   max-width: 1700px;
+  margin: 0 auto;
 }
 .workspace-toolbar {
   min-height: 61px;
