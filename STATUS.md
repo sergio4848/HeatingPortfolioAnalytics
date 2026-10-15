@@ -11,9 +11,9 @@ Branch: feat/latvia-pilot-demo. Original remote: https://github.com/sergio4848/H
 - Editable 12-slide PPTX and matching PDF, one-page overview, three-page pilot, brand guide. English/Turkish speech, Turkish notes, 24 Q&A, meeting questions, unsent follow-up draft and actual screenshot fallback.
 
 ## Verified
-- 39 Python tests pass on Windows and Linux container (one upstream TestClient deprecation warning).
-- 2 frontend contract tests pass; typecheck/production build, Python lint and Prettier check pass.
-- 4 Playwright tests pass against both SQLite and PostgreSQL Compose, including full journey and 1440/1024/390px overflow checks.
+- 43 Python tests pass on Windows; the prior 39-test baseline also passed in the Linux container (one upstream TestClient deprecation warning).
+- 10 frontend tests pass; typecheck/production build, Python lint and Prettier check pass.
+- 9 Playwright tests pass against PostgreSQL Compose, including journeys, routing, sorting/search/pagination, report period, reset focus, error handling and desktop/mobile automated accessibility. The earlier 4-test baseline also passed with SQLite.
 - Docker Compose build/start completed; app+PostgreSQL healthy, Alembic 001 head, repeated seed non-destructive. Application remains on 127.0.0.1:8000.
 - All 12 slides and five standalone PDF pages rendered/visually inspected; matching deck PDF 12 pages. Finalizer passes integrity/layout/font/re-import. Native PDF exporter lacked a bundled font module, so exact rendered slides form the PDF fallback. PPTX editable. No native PowerPoint run claimed.
 
@@ -26,7 +26,17 @@ Production: operational rate limits/CPU deadlines/quotas, backup/restore, retent
 Brand/company/domain clearance not completed. No actual customer/savings/field-accuracy/funding or acceptance claim. No email, account, purchase or public deployment performed.
 
 ## Next-session entry
-Use README and acceptance checklist. Keep demo/pilot/production separate. Before adding real data, complete the gates above. Remote delivery/CI status will be recorded after the final Git operation; do not assume a CI pass from local tests.
+Use README and acceptance checklist. Keep demo/pilot/production separate. Before adding real data, complete the gates above. Use the Git delivery section below for observed remote evidence; do not infer CI success from local tests.
 
 ## Git delivery
-Local implementation committed on feat/latvia-pilot-demo. Remote push was blocked by automatic approval review because explicit authorization to upload source/artifacts to the external remote was not established. No bypass attempted. User approval is required only for git push. Local source ZIP is delivered separately; application remains running locally. GitHub CI has not run.
+The earlier automatic-review upload block was superseded by the user's explicit authorization. feat/latvia-pilot-demo was pushed to the requested GitHub repository. The first Actions run failed on OS-dependent MIME handling for .xlsm; the extension is now rejected consistently before MIME handling. Fix commit 87ac223 passed Actions: https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38727237167.
+
+## Quality revision — 2026-10-15
+- Researched shadcn/ui, Radix, TanStack Table, Bulletproof React, the official FastAPI template, Playwright, axe-core and Fontsource. Fit/adoption/license assessment: docs/research/engineering-references.md.
+- Reworked original landing/workspace layouts, semantic theme, locally served Inter typography, charts, queue/table, responsive controls and contrast. No external template copied wholesale.
+- Added sortable/searchable/paginated table, accessible reset confirmation, reloadable routes, typed shared modules and lazy charts. Fixed applied-period/report consistency and server search/detail period handling.
+- Local verification: 43 Python, 10 frontend and 9 browser tests passed. Automated axe scans: zero violations for selected WCAG tags across seven views at 1440/390px. Manual/incomplete checks are recorded; no independent WCAG certification.
+- Production build, typecheck, Ruff, Prettier and npm audit passed (0 reported vulnerabilities at scan time). Updated 12-slide editable presentation, matching PDF, brand guide and actual screenshots.
+- Strengthened CI with PostgreSQL, migrations/repeated seed, Node 24, pinned action commits and retained browser evidence. Quality revision remote CI: pending push/check.
+
+The real-data pilot and production gates above remain open. Product quality improvements do not establish field results or production readiness.

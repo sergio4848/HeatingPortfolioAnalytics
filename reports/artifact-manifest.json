@@ -1,15 +1,15 @@
 {
   "presentations/exports/Portotherm-Brand-Guide.pdf": {
-    "bytes": 23430,
-    "sha256": "a79e80b58683bdea1b124b0cb4a813fc6bafffe8d2a1270e5ecacc9a13701864"
+    "bytes": 23491,
+    "sha256": "de62b028521ccf97eff0c6ff317a3cdc46bbdd358c2feda673bca77361186975"
   },
-  "presentations/exports/Portotherm-LIAA-release.pdf": {
-    "bytes": 514309,
-    "sha256": "6316e2545072fab818941c867167a7924250526a9260e900ed0cacf6fcf6f896"
+  "presentations/exports/Portotherm-LIAA-quality.pdf": {
+    "bytes": 532063,
+    "sha256": "ab13a5211045cb28e72bcfd603169e160db962be31718290cd7a6642fcbfc730"
   },
-  "presentations/exports/Portotherm-LIAA-release.pptx": {
-    "bytes": 220287,
-    "sha256": "605710f4b62222df4395548e978e7f0c8dcb6c54b03efbca9c5413091469730f"
+  "presentations/exports/Portotherm-LIAA-quality.pptx": {
+    "bytes": 282446,
+    "sha256": "7b365b503a8bfac5911d95d7329e4e624e6af09eaa957d98a7159311f60bf51b"
   },
   "presentations/exports/Portotherm-One-Pager.pdf": {
     "bytes": 19762,

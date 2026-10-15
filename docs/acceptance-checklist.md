@@ -18,12 +18,12 @@ Statuses distinguish local demonstration from real-data pilot and production.
 | Pilot roles | Verified JWT; admin/analyst/viewer checks | Signed RSA tokens with mocked JWKS retrieval | API tested; real IdP/browser login pending |
 | Upload security | Byte/row/expanded zip/formula limits | Chunked request, 10,000-row and unsafe XLSX tests | Passed; hard CPU deadline pending |
 | Fresh installation | Schema migration/seed idempotency | Fresh SQLite subprocess test; Compose evidence in reports/validation | SQLite fresh migration/seed and PostgreSQL Compose passed |
-| Responsive/accessibility | 1440/1024/390, labelled forms, focus, chart tables | Playwright body/document overflow assertions and inspected screenshots | Passed for tested paths; no independent WCAG audit |
+| Responsive/accessibility | 1440/1024/390, labelled forms, focus, chart tables | Playwright overflow, reset keyboard/focus, axe scans across seven views at desktop/mobile and inspected screenshots | Passed for tested paths; no independent WCAG audit |
 | Brand | Three directions, vector variants, PNG/icons, short guide | packages/brand and brand-guide PDF | Delivered; clearance pending |
 | Research/claims | Ten names, alternatives, explicit hypotheses | Research and claim register | Limited desk review; legal/domain clearance pending |
 | Meeting package | 12 editable slides/PDF, overview, 3-page pilot, bilingual prep | exports, source and docs/meeting | Delivered; founder facts pending |
 | Visual QA | Inspect every slide and standalone PDF page | Twelve rendered slides; 1+3+1 standalone pages | Inspected; not tested in native PowerPoint |
-| CI | Lint/typecheck/build/tests without secrets | .github/workflows/ci.yml | Configured; actual remote run recorded only if observed |
+| CI | Lint/typecheck/build/tests without secrets | .github/workflows/ci.yml | Baseline remote run passed; quality revision result in STATUS |
 | Real pilot | Authorized records, weather, identity, legal, specialist | Explicit gates in README/privacy/roadmap | Not ready until gates completed |
 | Production | Operational security/backup/concurrency/retention | Threat model and roadmap | Not production ready |
 

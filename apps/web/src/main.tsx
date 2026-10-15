@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
+import "@fontsource-variable/inter";
+import { BuildingTable } from "./components/building-table";
+import { ResetDialog } from "./components/reset-dialog";
+import { ErrorBoundary } from "./components/error-boundary";
+import { useRoute } from "./hooks/use-route";
 import {
-  AreaChart,
-  Area,
-  Line,
-  ComposedChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  ReferenceLine,
-} from "recharts";
+  DEFAULT_RANGE,
+  reportUrl,
+  matchesBuilding,
+  monthlyTotals,
+  rangeLabel,
+  type DateRange,
+} from "./lib/portfolio";
+import { api, json, ApiError } from "./lib/api";
+import { fmt, pct } from "./lib/format";
+import { Status } from "./components/status";
+import { Title } from "./components/page-header";
+import type { Portfolio, Task, Preview, Trace } from "./types";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { createRoot } from "react-dom/client";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -24,145 +30,26 @@ import {
   Download,
   ChevronLeft,
   CheckCircle2,
-  AlertTriangle,
-  RotateCcw,
   FileCheck2,
+  ShieldCheck,
+  Layers,
 } from "lucide-react";
 import brand from "../../../packages/brand/brand.json";
 import "./style.css";
+import "./theme.css";
 
-type Trace = {
-  period_start: string;
-  heat_kwh: number;
-  expected_kwh: number | null;
-  hdd: number;
-  coverage: number;
-  evaluation: boolean;
-  flagged: boolean;
-  residual_kwh: number | null;
-};
-type Building = {
-  id: string;
-  name: string;
-  heated_area_m2: number;
-  building_type: string;
-  quality: string;
-  status: string;
-  priority: number;
-  observed_kwh: number;
-  expected_kwh: number | null;
-  residual_kwh: number | null;
-  deviation: number | null;
-  intensity_kwh_m2: number;
-  missing_months: number;
-  reason: string;
-  limitations: string[];
-  quality_issues: string[];
-  flagged_months: string[];
-  model: null | {
-    training_start: string;
-    training_end: string;
-    training_months: number;
-    base_kwh_day: number;
-    heating_kwh_hdd: number;
-    training_mae_kwh: number;
-  };
-  trace: Trace[];
-};
-type Task = {
-  id: string;
-  building_id: string;
-  status: string;
-  assignee: string;
-  note: string;
-  technical_action: string;
-  priority: string;
-  due: string | null;
-  history: { at: string; status: string; note: string }[];
-};
-type Intervention = {
-  id: string;
-  building_id: string;
-  kind: string;
-  start: string;
-  end: string;
-  scope: string;
-  expected_effect: string;
-  cost: number | null;
-  cost_source: string;
-  notes: string;
-};
-type Portfolio = {
-  items: Building[];
-  total: number;
-  method: string;
-  disclosure: string;
-  organization: { name: string; threshold: number; unit: string };
-  tasks: Task[];
-  interventions: Intervention[];
-};
-type Preview = {
-  id: string;
-  headers: string[];
-  preview: Record<string, unknown>[];
-  issues: { row: number | string; building: string; message: string }[];
-  total_rows: number;
-  conflicts: string[];
-};
-const fmt = (n: number | null | undefined, d = 0) =>
-  n == null
-    ? "Unavailable"
-    : n.toLocaleString("en-GB", { maximumFractionDigits: d });
-const pct = (n: number | null) =>
-  n == null ? "Unavailable" : `${n > 0 ? "+" : ""}${(n * 100).toFixed(1)}%`;
-async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const res = await fetch("/api" + path, {
-    ...options,
-    headers:
-      options.body instanceof FormData
-        ? options.headers
-        : { "Content-Type": "application/json", ...options.headers },
-  });
-  if (!res.ok) {
-    const data = await res.json().catch(() => ({ detail: res.statusText }));
-    throw new Error(
-      typeof data.detail === "string"
-        ? data.detail
-        : JSON.stringify(data.detail),
-    );
-  }
-  return res.json();
-}
-const json = (method: string, data: unknown) => ({
-  method,
-  body: JSON.stringify(data),
-});
-const Status = ({ value }: { value: string }) => (
-  <span
-    className={
-      "status " +
-      (value === "investigate"
-        ? "warn"
-        : value === "within reference"
-          ? "good"
-          : "neutral")
-    }
-  >
-    {value === "investigate" ? (
-      <AlertTriangle size={13} />
-    ) : value === "within reference" ? (
-      <CheckCircle2 size={13} />
-    ) : (
-      <Activity size={13} />
-    )}{" "}
-    {value}
-  </span>
+const PortfolioChart = lazy(() =>
+  import("./features/charts").then((m) => ({ default: m.PortfolioChart })),
 );
-
+const HeatChart = lazy(() =>
+  import("./features/charts").then((m) => ({ default: m.HeatChart })),
+);
 function App() {
-  const [page, setPage] = useState("home"),
-    [data, setData] = useState<Portfolio | null>(null),
-    [selected, setSelected] = useState<string | null>(null),
+  const { page, selected, go: setPage } = useRoute();
+  const [appliedRange, setAppliedRange] = useState<DateRange>(DEFAULT_RANGE);
+  const [query, setQuery] = useState("");
+  const loadSequence = useRef(0);
+  const [data, setData] = useState<Portfolio | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
     [toast, setToast] = useState("");
@@ -190,8 +77,11 @@ function App() {
     cost_source: "",
     notes: "",
   });
-  async function load() {
-    const d = await api<Portfolio>(`/portfolio?start=${start}&end=${end}`);
+  async function load(range: DateRange = appliedRange) {
+    const sequence = ++loadSequence.current;
+    const d = await api<Portfolio>(`/portfolio?${new URLSearchParams(range)}`);
+    if (sequence !== loadSequence.current) return;
+    setAppliedRange(range);
     setData(d);
     setOrgName(d.organization.name);
     setThreshold(d.organization.threshold);
@@ -211,7 +101,8 @@ function App() {
     void run(async () => {
       try {
         await api("/session");
-      } catch {
+      } catch (error) {
+        if (!(error instanceof ApiError) || error.status !== 401) throw error;
         await api("/session", { method: "POST" });
       }
       await load();
@@ -228,36 +119,27 @@ function App() {
       (b) =>
         (!type || b.building_type === type) &&
         (!quality || b.quality === quality) &&
-        (!status || b.status === status),
+        (!status || b.status === status) &&
+        matchesBuilding(b, query),
     );
   const current = buildings.find((b) => b.id === selected);
-  const params = new URLSearchParams({
-    start,
-    end,
-    kind: type,
-    quality,
-    status,
-  });
-  const report = (format: string, bid = "") =>
-    `/api/reports/${format}?${new URLSearchParams({ ...Object.fromEntries(params), bid })}`;
-  const total = filtered.reduce((s, b) => s + b.observed_kwh, 0);
-  const aggregate = Object.values(
-    filtered.reduce<Record<string, { period: string; heat: number }>>(
-      (acc, b) => {
-        b.trace
-          .filter((t) => t.evaluation)
-          .forEach((t) => {
-            acc[t.period_start] ??= {
-              period: t.period_start.slice(0, 7),
-              heat: 0,
-            };
-            acc[t.period_start].heat += t.heat_kwh;
-          });
-        return acc;
-      },
-      {},
-    ),
-  ).sort((a, b) => a.period.localeCompare(b.period));
+  const report = (format: "csv" | "pdf", bid = "") =>
+    reportUrl(
+      format,
+      appliedRange,
+      { kind: type, quality, status, q: query },
+      bid,
+    );
+  const total = filtered.reduce((sum, b) => sum + b.observed_kwh, 0);
+  const aggregate = monthlyTotals(filtered);
+  const priorityBuilding = buildings.find((b) => b.status === "investigate");
+  const period = rangeLabel(appliedRange);
+  const clearFilters = () => {
+    setQuery("");
+    setType("");
+    setQuality("");
+    setStatus("");
+  };
   const nav = [
     ["portfolio", "Portfolio", LayoutDashboard],
     ["import", "Import data", Upload],
@@ -266,8 +148,7 @@ function App() {
     ["settings", "Settings", Settings],
   ] as const;
   function openBuilding(id: string) {
-    setSelected(id);
-    setPage("building");
+    setPage("building", id);
     window.scrollTo(0, 0);
   }
   function newTask(bid: string) {
@@ -293,26 +174,6 @@ function App() {
       await api<Preview>("/imports/preview", { method: "POST", body: form }),
     );
   }
-  const Title = ({
-    eyebrow,
-    title,
-    subtitle,
-    children,
-  }: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    children?: React.ReactNode;
-  }) => (
-    <header className="page-head">
-      <div>
-        <p className="eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
-        <p className="muted">{subtitle}</p>
-      </div>
-      <div className="actions">{children}</div>
-    </header>
-  );
   const Downloads = ({ bid = "" }: { bid?: string }) => (
     <>
       <a className="button secondary" href={report("csv", bid)} download>
@@ -325,7 +186,17 @@ function App() {
   );
   return (
     <>
-      <div className="disclosure">
+      <a
+        className="skip-link"
+        href="#main-content"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById("main-content")?.focus();
+        }}
+      >
+        Skip to content
+      </a>
+      <div className="disclosure" role="banner">
         <span className="demo-dot" />{" "}
         {data?.disclosure ??
           "Synthetic demo data — not measured customer results"}
@@ -334,7 +205,7 @@ function App() {
       {page === "home" ? (
         <>
           <nav className="landing-nav">
-            <a className="brand" href="#" onClick={() => setPage("home")}>
+            <a className="brand" href="#/" onClick={() => setPage("home")}>
               <img src="/symbol.svg" alt="" />
               {brand.name}
               <small>PROVISIONAL</small>
@@ -343,7 +214,7 @@ function App() {
               Pilot scope <ArrowUpRight size={15} />
             </a>
           </nav>
-          <main className="landing">
+          <main className="landing" id="main-content" tabIndex={-1}>
             <section className="hero">
               <div>
                 <p className="eyebrow">HEATING PORTFOLIO ANALYTICS</p>
@@ -363,14 +234,26 @@ function App() {
                   Explore the demo <ArrowRight size={18} />
                 </button>
                 <p className="small muted">
-                  12 synthetic buildings · No new sensors required · Human
-                  review
+                  {buildings.length} synthetic buildings · No new sensors
+                  required · Human review
                 </p>
               </div>
               <div className="hero-preview">
                 <div className="preview-label">
                   <span>PORTFOLIO / INVESTIGATION QUEUE</span>
                   <Activity size={18} />
+                </div>
+                <div className="preview-summary">
+                  <div>
+                    <span>PORTFOLIO IN VIEW</span>
+                    <strong>
+                      {buildings.length}
+                      <small>synthetic buildings</small>
+                    </strong>
+                  </div>
+                  <span className="preview-health">
+                    <ShieldCheck size={15} /> Traceable evidence
+                  </span>
                 </div>
                 <h2>
                   One portfolio.
@@ -396,7 +279,8 @@ function App() {
                   </button>
                 ))}
                 <p className="small">
-                  Live calculations from a deterministic synthetic dataset.
+                  Calculated from monthly synthetic records. Human review
+                  required.
                 </p>
               </div>
             </section>
@@ -493,7 +377,7 @@ function App() {
       ) : (
         <div className="app-shell">
           <aside>
-            <a className="brand" href="#" onClick={() => setPage("home")}>
+            <a className="brand" href="#/" onClick={() => setPage("home")}>
               <img src="/symbol.svg" alt="" />
               {brand.name}
             </a>
@@ -505,6 +389,11 @@ function App() {
               {nav.map(([id, label, Icon]) => (
                 <button
                   key={id}
+                  aria-current={
+                    page === id || (id === "portfolio" && page === "building")
+                      ? "page"
+                      : undefined
+                  }
                   className={
                     page === id || (id === "portfolio" && page === "building")
                       ? "active"
@@ -534,30 +423,46 @@ function App() {
                 <br />
                 Provisional brand
               </small>
-              <button
-                className="text-button"
-                onClick={() =>
-                  void run(async () => {
-                    await api("/reset", { method: "POST" });
-                    await load();
-                    setToast("Your isolated demo session has been reset.");
-                  })
-                }
-              >
-                <RotateCcw size={14} /> Reset my demo
-              </button>
+              <ResetDialog
+                onReset={async () => {
+                  await api("/reset", { method: "POST" });
+                  await load();
+                  setToast("Your isolated demo session has been reset.");
+                }}
+              />
             </div>
           </aside>
-          <main className="app-main">
+          <main className="app-main" id="main-content" tabIndex={-1}>
+            <div className="workspace-toolbar">
+              <div>
+                <Layers size={15} />
+                <span>Workspace</span>
+                <span className="breadcrumb-divider">/</span>
+                <strong>
+                  {page === "building"
+                    ? (current?.name ?? "Building")
+                    : nav.find(([id]) => id === page)?.[1]}
+                </strong>
+              </div>
+              <span className="workspace-state">
+                <ShieldCheck size={14} /> Isolated synthetic workspace
+              </span>
+            </div>
             {page === "portfolio" && (
               <>
                 <Title
                   eyebrow="YOUR PORTFOLIO"
-                  title="A clearer view of where to start"
-                  subtitle="Review monthly heat use against each building’s own weather reference."
+                  title="Portfolio overview"
+                  subtitle="A monthly view of your portfolio, with the context to decide what comes next."
                 >
                   <Downloads />
                 </Title>
+                <div className="view-context">
+                  <span className="period-badge">{period}</span>
+                  <span>{buildings.length} synthetic buildings</span>
+                  <span className="context-separator">·</span>
+                  <span>{data?.method}</span>
+                </div>
                 <div className="filter-bar">
                   <label>
                     From
@@ -575,7 +480,11 @@ function App() {
                       onChange={(e) => setEnd(e.target.value)}
                     />
                   </label>
-                  <button className="secondary" onClick={() => void run(load)}>
+                  <button
+                    className="secondary"
+                    disabled={busy}
+                    onClick={() => void run(() => load({ start, end }))}
+                  >
                     Apply period
                   </button>
                   <label>
@@ -664,34 +573,13 @@ function App() {
                       <span className="small muted">Observed monthly heat</span>
                     </div>
                     <div className="chart">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={aggregate}>
-                          <CartesianGrid vertical={false} stroke="#e4ebee" />
-                          <XAxis dataKey="period" tick={{ fontSize: 11 }} />
-                          <YAxis
-                            width={60}
-                            tickFormatter={(n) => `${n / 1000}k`}
-                            tick={{ fontSize: 11 }}
-                          />
-                          <Tooltip
-                            formatter={(v) => [
-                              fmt(Number(v)) + " kWh",
-                              "Observed",
-                            ]}
-                          />
-                          <Area
-                            isAnimationActive={false}
-                            dataKey="heat"
-                            stroke={brand.teal}
-                            fill="#d8efeb"
-                            strokeWidth={2}
-                          />
-                        </AreaChart>
-                      </ResponsiveContainer>
+                      <Suspense fallback={<div className="chart-skeleton" />}>
+                        <PortfolioChart data={aggregate} />
+                      </Suspense>
                     </div>
                     <p className="small muted">
-                      kWh, {start} to {end}. Totals reflect available records;
-                      coverage varies.
+                      kWh, {appliedRange.start} to {appliedRange.end}. Totals
+                      reflect available records; coverage varies.
                     </p>
                     <details>
                       <summary>Accessible consumption table</summary>
@@ -718,12 +606,31 @@ function App() {
                   <div className="panel review-note">
                     <FileCheck2 size={30} />
                     <p className="eyebrow">THE NEXT DECISION</p>
-                    <h2>Start with the evidence.</h2>
+                    <h2>
+                      {priorityBuilding
+                        ? "An investigation worth starting."
+                        : "The evidence comes first."}
+                    </h2>
                     <p>
                       The list ranks investigation priority. Weather, missing
                       records and meter changes affect what a comparison can
                       tell you.
                     </p>
+                    {priorityBuilding && (
+                      <button
+                        className="priority-preview"
+                        onClick={() => openBuilding(priorityBuilding.id)}
+                      >
+                        <span>
+                          <strong>{priorityBuilding.name}</strong>
+                          <small>
+                            {pct(priorityBuilding.deviation)} vs weather
+                            reference
+                          </small>
+                        </span>
+                        <ArrowUpRight size={20} />
+                      </button>
+                    )}
                     <div>
                       <span className="small muted">Reference</span>
                       <strong>Each building’s own history</strong>
@@ -739,78 +646,24 @@ function App() {
                     </div>
                   </div>
                 </section>
-                <section className="panel">
-                  <div className="section-head">
-                    <div>
-                      <p className="eyebrow">INVESTIGATION QUEUE</p>
-                      <h2>Buildings to review</h2>
-                    </div>
-                    <span className="small muted">
-                      {filtered.length} buildings · {start} – {end}
-                    </span>
-                  </div>
-                  <div className="table-wrap">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Building</th>
-                          <th>Review status</th>
-                          <th>Observed kWh</th>
-                          <th>Deviation</th>
-                          <th>Quality</th>
-                          <th>Priority / 100</th>
-                          <th>
-                            <span className="sr-only">Open</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filtered.map((b) => (
-                          <tr key={b.id}>
-                            <td>
-                              <button
-                                className="link building-link"
-                                onClick={() => openBuilding(b.id)}
-                              >
-                                {b.name}
-                                <small>
-                                  {b.id} · {fmt(b.heated_area_m2)} m²
-                                </small>
-                              </button>
-                            </td>
-                            <td>
-                              <Status value={b.status} />
-                            </td>
-                            <td className="numeric">{fmt(b.observed_kwh)}</td>
-                            <td className="numeric">{pct(b.deviation)}</td>
-                            <td>
-                              {b.quality}
-                              <small>
-                                {b.missing_months} missing evaluation months
-                              </small>
-                            </td>
-                            <td className="numeric">{b.priority || "—"}</td>
-                            <td>
-                              <button
-                                aria-label={`Open ${b.name}`}
-                                className="icon-button"
-                                onClick={() => openBuilding(b.id)}
-                              >
-                                <ArrowUpRight size={18} />
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  {!filtered.length && (
-                    <p className="empty">
-                      No buildings match these filters. Try a wider selection.
-                    </p>
-                  )}
-                </section>
+                <BuildingTable
+                  items={filtered}
+                  query={query}
+                  onQuery={setQuery}
+                  onOpen={openBuilding}
+                  onClear={clearFilters}
+                  period={period}
+                />
               </>
+            )}
+            {page === "building" && !current && !busy && data && (
+              <section className="panel empty">
+                <h1>Building unavailable</h1>
+                <p>This building is not in your current workspace.</p>
+                <button onClick={() => setPage("portfolio")}>
+                  Back to portfolio
+                </button>
+              </section>
             )}
             {page === "building" && current && (
               <>
@@ -820,7 +673,7 @@ function App() {
                 <Title
                   eyebrow={`${current.id} / BUILDING DETAIL`}
                   title={current.name}
-                  subtitle={`${current.building_type} · ${fmt(current.heated_area_m2)} m² heated area · ${start} to ${end}`}
+                  subtitle={`${current.building_type} · ${fmt(current.heated_area_m2)} m² heated area · ${appliedRange.start} to ${appliedRange.end}`}
                 >
                   <button onClick={() => newTask(current.id)}>
                     <ClipboardList size={16} /> Create review task
@@ -862,44 +715,17 @@ function App() {
                     {current.model
                       ? `${current.model.training_start} to ${current.model.training_end}`
                       : "insufficient"}{" "}
-                    · Evaluation {start} to {end}. Reference drawn across
-                    history for context; only evaluation months score findings.
+                    · Evaluation {appliedRange.start} to {appliedRange.end}.
+                    Reference drawn across history for context; only evaluation
+                    months score findings.
                   </p>
                   <div className="chart large">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <ComposedChart data={current.trace}>
-                        <CartesianGrid vertical={false} stroke="#e4ebee" />
-                        <XAxis
-                          dataKey="period_start"
-                          tickFormatter={(s) => s.slice(0, 7)}
-                          minTickGap={48}
-                          tick={{ fontSize: 11 }}
-                        />
-                        <YAxis
-                          tickFormatter={(v) => `${v / 1000}k`}
-                          width={60}
-                          tick={{ fontSize: 11 }}
-                        />
-                        <Tooltip formatter={(v) => fmt(Number(v)) + " kWh"} />
-                        <Area
-                          isAnimationActive={false}
-                          name="Observed"
-                          dataKey="heat_kwh"
-                          fill="#d8efeb"
-                          stroke={brand.teal}
-                          strokeWidth={2}
-                        />
-                        <Line
-                          isAnimationActive={false}
-                          name="Reference"
-                          dataKey="expected_kwh"
-                          dot={false}
-                          stroke={brand.navy}
-                          strokeDasharray="5 5"
-                          strokeWidth={2}
-                        />
-                      </ComposedChart>
-                    </ResponsiveContainer>
+                    <Suspense fallback={<div className="chart-skeleton" />}>
+                      <HeatChart
+                        rows={current.trace}
+                        evaluationStart={appliedRange.start}
+                      />
+                    </Suspense>
                   </div>
                   <details>
                     <summary>
@@ -1440,46 +1266,12 @@ function App() {
                         Synthetic HDD base 15.5°C.
                       </p>
                       <div className="chart">
-                        <ResponsiveContainer width="100%" height="100%">
-                          <ComposedChart
-                            data={b?.trace.filter((t) => t.evaluation) ?? []}
-                          >
-                            <CartesianGrid vertical={false} stroke="#e4ebee" />
-                            <XAxis
-                              dataKey="period_start"
-                              tickFormatter={(s) => s.slice(0, 7)}
-                              tick={{ fontSize: 11 }}
-                            />
-                            <YAxis
-                              width={60}
-                              tickFormatter={(n) => `${n / 1000}k`}
-                              tick={{ fontSize: 11 }}
-                            />
-                            <Tooltip
-                              formatter={(v) => fmt(Number(v)) + " kWh"}
-                            />
-                            <Area
-                              isAnimationActive={false}
-                              name="Observed"
-                              dataKey="heat_kwh"
-                              stroke={brand.teal}
-                              fill="#d8efeb"
-                            />
-                            <Line
-                              isAnimationActive={false}
-                              name="Weather reference"
-                              dataKey="expected_kwh"
-                              stroke={brand.navy}
-                              strokeDasharray="5 5"
-                              dot={false}
-                            />
-                            <ReferenceLine
-                              x={i.start.slice(0, 7) + "-01"}
-                              stroke="#80520b"
-                              label={{ value: "Event month", fontSize: 11 }}
-                            />
-                          </ComposedChart>
-                        </ResponsiveContainer>
+                        <Suspense fallback={<div className="chart-skeleton" />}>
+                          <HeatChart
+                            rows={b?.trace.filter((t) => t.evaluation) ?? []}
+                            eventMonth={i.start.slice(0, 7) + "-01"}
+                          />
+                        </Suspense>
                       </div>
                       <details>
                         <summary>
@@ -1773,4 +1565,8 @@ function App() {
   );
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>,
+);

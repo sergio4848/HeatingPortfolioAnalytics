@@ -18,5 +18,13 @@ Initial oversized-upload status 422 changed to 413. Playwright Status selector c
 One upstream Starlette TestClient deprecation warning: current test transport uses httpx and upstream recommends httpx2. Tests pass. No dependency warning hidden or silenced.
 Actual OIDC deployment, authorized customer data, real weather ingestion, expert model validation, legal agreements and operational production controls remain pending. Tests use real RSA signature verification with mocked JWKS transport, not a real identity provider. No independent accessibility audit, energy audit, field accuracy, annual savings or support eligibility claimed. GitHub CI run is only claimed if observed after push.
 
-## Remote delivery boundary
-Local commit and clean artifact package completed. The automatic approval reviewer rejected git push for lack of explicit remote-upload authorization. No remote push or GitHub CI execution is claimed. All local/Compose evidence above remains valid.
+## Remote delivery and quality revision
+User explicitly authorized remote delivery. Branch push succeeded. An initial GitHub Actions failure exposed OS-dependent .xlsm MIME handling; fix 87ac223 passed run https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38727237167. Earlier upload-boundary notes are superseded.
+
+Latest local revision: 43 Python tests, 10 frontend tests, 9 Playwright tests passed against PostgreSQL Compose. Typecheck, production build, Ruff and Prettier passed. npm audit reported zero vulnerabilities at scan time. The earlier counts above describe the original baseline, not the revised suite.
+
+New browser checks cover table search/sorting/pagination, reload/back navigation, applied-date/report consistency, reset cancel/default focus/return focus/confirm, and HTTP error behavior without a replacement session. Original import/task/download journey and 1440/1024/390px overflow checks remain. Screenshots now wait for lazy chart SVGs before capture.
+
+reports/accessibility/axe-1440.json and axe-390.json contain actual scans of landing, portfolio, building, import, tasks, interventions and settings. Selected WCAG 2 A/AA and 2.1 A/AA tags have zero detected violations. Initial insufficient helper-text contrast was corrected and scans rerun. Incomplete checks remain manual-review items. Automated results cannot certify complete WCAG conformance. Reset keyboard/focus behavior is separately tested.
+
+Revised deck: Portotherm-LIAA-quality.pptx/pdf, same twelve-slide structure and editable text/notes, updated actual product screenshots. Finalizer again reports integrity/layout/font checks passed, 99 Arial uses, no findings, successful re-import. Unchanged native PDF limitation and fallback described above. Quality revision remote CI result is recorded in STATUS after observation.

@@ -1,0 +1,56 @@
+[
+  {
+    "route": "/",
+    "violations": [],
+    "passes": 16,
+    "incomplete": []
+  },
+  {
+    "route": "/#/portfolio",
+    "violations": [],
+    "passes": 28,
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 43
+      }
+    ]
+  },
+  {
+    "route": "/#/building/SYN-003",
+    "violations": [],
+    "passes": 23,
+    "incomplete": []
+  },
+  {
+    "route": "/#/import",
+    "violations": [],
+    "passes": 22,
+    "incomplete": []
+  },
+  {
+    "route": "/#/tasks",
+    "violations": [],
+    "passes": 20,
+    "incomplete": []
+  },
+  {
+    "route": "/#/monitoring",
+    "violations": [],
+    "passes": 25,
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 18
+      }
+    ]
+  },
+  {
+    "route": "/#/settings",
+    "violations": [],
+    "passes": 22,
+    "incomplete": []
+  }
+]

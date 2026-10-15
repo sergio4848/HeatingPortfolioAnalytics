@@ -7,6 +7,7 @@ import os
 import secrets
 import time
 from contextlib import asynccontextmanager
+from collections import defaultdict
 from datetime import datetime, timezone, date
 from pathlib import Path
 from typing import Literal
@@ -208,12 +209,14 @@ def health(s: Session = Depends(db)):
 def results(s, c, start, end):
     org = get(s, c["tenant"], "Organization", c["tenant"])
     weather = {w["period_start"]: w for w in all_items(s, c["tenant"], "WeatherRecord")}
-    records = all_items(s, c["tenant"], "ConsumptionRecord")
+    records = defaultdict(list)
+    for record in all_items(s, c["tenant"], "ConsumptionRecord"):
+        records[record["building_external_id"]].append(record)
     return sorted(
         [
             analyze(
                 b,
-                [r for r in records if r["building_external_id"] == b["id"]],
+                records[b["id"]],
                 weather,
                 start,
                 end,
@@ -258,10 +261,13 @@ def portfolio(
 
 
 @app.get("/api/buildings/{bid}")
-def building(bid: str, c=Depends(context), s: Session = Depends(db)):
+def building(
+    bid: str, start: str = "2026-01-01", end: str = "2026-09-30", c=Depends(context), s: Session = Depends(db)
+):
+    dates(start, end)
     if not get(s, c["tenant"], "Building", bid):
         raise HTTPException(404, "Building not found")
-    return next(b for b in results(s, c, "2026-01-01", "2026-09-30") if b["id"] == bid)
+    return next(b for b in results(s, c, start, end) if b["id"] == bid)
 
 
 class TaskIn(BaseModel):
@@ -520,7 +526,7 @@ def reset(c=Depends(writer), s: Session = Depends(db)):
     return {"status": "reset"}
 
 
-def report_data(s, c, start, end, bid, quality, kind, status):
+def report_data(s, c, start, end, bid, quality, kind, status, q=""):
     dates(start, end)
     data = results(s, c, start, end)
     if bid:
@@ -533,6 +539,9 @@ def report_data(s, c, start, end, bid, quality, kind, status):
         if (not quality or b["quality"] == quality)
         and (not kind or b["building_type"] == kind)
         and (not status or b["status"] == status)
+        and (
+            not q.strip() or q.strip().casefold() in f"{b['id']} {b['name']} {b['building_type']}".casefold()
+        )
     ]
 
 
@@ -545,10 +554,11 @@ def report(
     quality: str = "",
     kind: str = "",
     status: str = "",
+    q: str = Query("", max_length=120),
     c=Depends(context),
     s: Session = Depends(db),
 ):
-    data = report_data(s, c, start, end, bid, quality, kind, status)
+    data = report_data(s, c, start, end, bid, quality, kind, status, q)
     disclosure = DISCLOSURE if c["data_type"] == "synthetic" else "Pilot data — human review required"
     generated = datetime.now(timezone.utc).isoformat()
     if format == "csv":

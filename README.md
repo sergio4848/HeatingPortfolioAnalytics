@@ -44,7 +44,7 @@ Compose publishes only 127.0.0.1:8000, waits for PostgreSQL health, runs migrati
 - Twelve deterministic synthetic buildings, 33 months, separate scenario labels, synthetic HDD weather.
 - Real backend CSV/macro-free XLSX preview, column mapping, unit/date/area/duplicate validation, explicit commit/skip policy and analysis.
 - Explainable own-history weather reference with out-of-time evaluation, insufficient-data and quality states.
-- Portfolio filters, building chart/table/reasons, review tasks/history, interventions and audited settings.
+- Searchable, sortable, paginated portfolio, applied-period reports, reloadable building routes, chart/table/reasons, review tasks/history, interventions and audited settings.
 - Tenant-scoped CSV/PDF evidence, isolated signed-cookie demo workspaces, pilot API JWT verification and admin/analyst/viewer authorization.
 
 All screens/exports disclose **Synthetic demo data — not measured customer results**. Do not upload real customer records into the demo. The engine does not diagnose faults, control heating, certify audits or verify savings.
@@ -69,7 +69,7 @@ Set BROWSER_EXECUTABLE to an existing Chromium binary if necessary. Browser test
 
 ## Deliverables and reproduction
 
-- [12-slide editable presentation](presentations/exports/Portotherm-LIAA-release.pptx), [matching PDF](presentations/exports/Portotherm-LIAA-release.pdf).
+- [12-slide editable presentation](presentations/exports/Portotherm-LIAA-quality.pptx), [matching PDF](presentations/exports/Portotherm-LIAA-quality.pdf).
 - [One-page overview](presentations/exports/Portotherm-One-Pager.pdf), [three-page pilot proposal](presentations/exports/Portotherm-Pilot-Proposal.pdf), [brand guide](presentations/exports/Portotherm-Brand-Guide.pdf).
 - [SVG/PNG/icons and identity guide](packages/brand/README.md), central [brand configuration](packages/brand/brand.json).
 - [English/Turkish pitch](docs/meeting/pitch-en-tr.md), [Turkish slide notes](docs/meeting/speaker-notes-tr.md), [24 Q&A](docs/meeting/questions-and-answers.md), [demo/backup flow](docs/meeting/demo-script.md), [meeting questions](docs/meeting/meeting-notes.md), [unsent email draft](docs/meeting/follow-up-email-draft.md).
@@ -84,3 +84,7 @@ Local demo readiness is separate from a real-data pilot. Real pilot needs extern
 Production additionally needs rate limiting, hard CPU deadlines, session quotas/garbage collection, backup/restore, operational logs, retention automation, concurrency controls, security review and reviewed Latvian copy. Current entity JSON storage favors a small demo and requires hardening. See [decisions](docs/decisions.md).
 
 Founder identity/contact remains blank in [editable profile](docs/meeting/founder-profile.json). The brief mentions a 22 October 2026 consultation; verify time/access privately. Name/domain/trademark clearance is pending. No open-source license selected; see [third-party sources](THIRD_PARTY.md).
+
+## Design and engineering revision
+
+Self-hosted Inter, consistent semantic theme, accessible reset confirmation, typed API/errors and lazy charts. Reference selection and concrete adoption: [engineering assessment](docs/research/engineering-references.md). Executed validation: [test evidence](reports/validation.md). Git delivery and CI status: [STATUS](STATUS.md).

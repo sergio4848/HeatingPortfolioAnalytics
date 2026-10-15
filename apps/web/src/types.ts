@@ -1,0 +1,78 @@
+export type Trace = {
+  period_start: string;
+  heat_kwh: number;
+  expected_kwh: number | null;
+  hdd: number;
+  coverage: number;
+  evaluation: boolean;
+  flagged: boolean;
+  residual_kwh: number | null;
+};
+export type Building = {
+  id: string;
+  name: string;
+  heated_area_m2: number;
+  building_type: string;
+  quality: string;
+  status: string;
+  priority: number;
+  observed_kwh: number;
+  expected_kwh: number | null;
+  residual_kwh: number | null;
+  deviation: number | null;
+  intensity_kwh_m2: number;
+  missing_months: number;
+  reason: string;
+  limitations: string[];
+  quality_issues: string[];
+  flagged_months: string[];
+  model: null | {
+    training_start: string;
+    training_end: string;
+    training_months: number;
+    base_kwh_day: number;
+    heating_kwh_hdd: number;
+    training_mae_kwh: number;
+  };
+  trace: Trace[];
+};
+export type Task = {
+  id: string;
+  building_id: string;
+  status: string;
+  assignee: string;
+  note: string;
+  technical_action: string;
+  priority: string;
+  due: string | null;
+  history: { at: string; status: string; note: string }[];
+};
+export type Intervention = {
+  id: string;
+  building_id: string;
+  kind: string;
+  start: string;
+  end: string;
+  scope: string;
+  expected_effect: string;
+  cost: number | null;
+  cost_source: string;
+  notes: string;
+};
+export type Portfolio = {
+  items: Building[];
+  total: number;
+  method: string;
+  disclosure: string;
+  organization: { name: string; threshold: number; unit: string };
+  tasks: Task[];
+  interventions: Intervention[];
+};
+export type Preview = {
+  id: string;
+  headers: string[];
+  preview: Record<string, unknown>[];
+  issues: { row: number | string; building: string; message: string }[];
+  total_rows: number;
+  conflicts: string[];
+};

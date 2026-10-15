@@ -8,7 +8,7 @@ Run the local app and `npm run e2e` in apps/web. Tests create actual screenshots
 
 ## Brand
 
-Set RUNTIME_NODE_MODULES to the bundled Node package directory returned by the Codex workspace-dependency tool. Then `node scripts/brand.mjs` creates PNG and app-icon exports from the editable SVGs. No font binaries are distributed.
+Set RUNTIME_NODE_MODULES to the bundled Node package directory returned by the Codex workspace-dependency tool. Then `node scripts/brand.mjs` creates PNG and app-icon exports from the editable SVGs. The app self-hosts Inter under SIL OFL-1.1; full license is in packages/brand/licenses. PowerPoint uses Arial and standalone PDFs use Helvetica.
 
 ## Editable PowerPoint
 

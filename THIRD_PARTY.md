@@ -11,4 +11,9 @@ openpyxl MIT https://openpyxl.readthedocs.io/
 ReportLab BSD https://www.reportlab.com/
 PyJWT MIT https://github.com/jpadilla/pyjwt
 PostgreSQL PostgreSQL License https://www.postgresql.org/about/licence/
-System fonts not redistributed. Artifact Tool is bundled authoring tooling, not app runtime. Exact trees: requirements.lock.txt, apps/web/package-lock.json. Review transitive licenses before redistribution.
+TanStack Table MIT https://github.com/TanStack/table/blob/main/LICENSE
+Radix Primitives MIT https://github.com/radix-ui/primitives/blob/main/LICENSE
+Inter variable font SIL OFL-1.1, distributed via Fontsource https://github.com/fontsource/fontsource. Full font copyright and license: packages/brand/licenses/Inter-OFL.txt. Font binaries are bundled by Vite from the pinned package during build.
+Playwright Apache-2.0 https://github.com/microsoft/playwright/blob/main/LICENSE
+axe-core / @axe-core/playwright MPL-2.0 https://github.com/dequelabs/axe-core/blob/develop/LICENSE
+Proprietary system fonts are not redistributed. Artifact Tool is bundled authoring tooling, not app runtime. Exact trees: requirements.lock.txt, apps/web/package-lock.json. Review transitive licenses before redistribution. Reference repositories and adoption decisions: docs/research/engineering-references.md. Referencing a repository does not imply its source is bundled here.

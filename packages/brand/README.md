@@ -2,7 +2,7 @@
 Provisional brand; clearance pending. Central identity configuration: brand.json. Slogan: See where to investigate.
 
 Primary navy #142B3D; teal #006D77; background #F4F7F8; muted text #526776; warning #80520B on #FFF0D6. Navy on white/light background for readable text. Amber only for meaningful warnings; status always includes text/icon.
-Typography: Segoe UI/Arial/system sans-serif. No font binaries redistributed. Deck: Arial. Headings 25–32 px, body 14 px, tabular numbers. Dense desktop tables 12 px; inner scrolling on mobile.
+Typography: self-hosted Inter Variable for the application, system sans-serif fallback. Fontsource package is pinned; Inter is SIL OFL-1.1, with full copyright/license in licenses/Inter-OFL.txt. Deck: Arial; standalone PDF: Helvetica. Headings 27–32 px, body 14 px, tabular numbers. Dense desktop tables 12 px; inner scrolling on mobile. Use semantic tokens in apps/web/src/theme.css for surfaces, borders, muted text, focus and radius. Status includes text and icon; use amber only for review issues.
 
 ## Logo directions
 Selected direction 1: portfolio columns and an investigation signal (symbol-light.svg). Original geometry, no flame or copied icon. Direction 2 building bars/baseline is architectural but less analytical. Direction 3 roof/signal bars loses definition at small sizes. Both alternatives remain editable SVGs.
@@ -15,4 +15,4 @@ Minimum symbol 16 px, prefer 24/32 px. Minimum wordmark 128 px wide. Clear space
 
 Use investigation priority, weather reference, observed deviation, data review and scenario estimate. Avoid guaranteed saving, fault certainty, real-time and endorsement claims. Latvian copy requires a human reviewer.
 
-Original logo: repository license decision pending. Lucide ISC https://lucide.dev/license. React/Vite/Recharts MIT. System fonts remain under vendor/system licenses and are not redistributed. See THIRD_PARTY.md and dependency locks.
+Original logo: repository license decision pending. Lucide ISC https://lucide.dev/license. React/Vite/Recharts MIT. Inter font SIL OFL-1.1. Proprietary system fonts remain under vendor/system licenses and are not redistributed. See THIRD_PARTY.md and dependency locks.

@@ -169,3 +169,23 @@ def test_reset_is_scoped(client):
     assert p["total"] == 12 and not p["tasks"]
     with Session(main.engine) as s:
         assert len(db.all_items(s, "demo", "Building")) == 12
+
+
+def test_report_search_and_building_period_consistency(client):
+    report = client.get("/api/reports/csv?q=+syn-003+")
+    assert "SYN-003" in report.text and "SYN-001" not in report.text
+    portfolio = client.get("/api/portfolio?start=2026-02-01&end=2026-04-30").json()
+    detail = client.get("/api/buildings/SYN-003?start=2026-02-01&end=2026-04-30").json()
+    assert detail["observed_kwh"] == next(
+        b["observed_kwh"] for b in portfolio["items"] if b["id"] == "SYN-003"
+    )
+    assert detail["evaluation_start"] == "2026-02-01"
+
+
+@pytest.mark.parametrize(
+    "content_type", ["application/octet-stream", "application/vnd.ms-excel.sheet.macroEnabled.12", "text/csv"]
+)
+def test_macro_extension_has_a_platform_independent_error(client, content_type):
+    r = client.post("/api/imports/preview", files={"file": ("unsafe.xlsm", b"bad", content_type)})
+    assert r.status_code == 415
+    assert "macro-free XLSX" in r.json()["detail"]

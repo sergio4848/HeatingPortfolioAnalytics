@@ -13,8 +13,9 @@ test("demo, finding, review, import and report downloads", async ({ page }) => {
   });
   await page.getByRole("button", { name: "Explore the demo" }).click();
   await expect(
-    page.getByRole("heading", { name: "A clearer view of where to start" }),
+    page.getByRole("heading", { name: "Portfolio overview" }),
   ).toBeVisible();
+  await expect(page.locator(".chart svg.recharts-surface")).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({
     path: "../../reports/screenshots/02-portfolio.png",
@@ -29,6 +30,7 @@ test("demo, finding, review, import and report downloads", async ({ page }) => {
     .getByRole("button", { name: "Open Building 03", exact: true })
     .click();
   await expect(page.getByText("Trace the comparison")).toBeVisible();
+  await expect(page.locator(".chart svg.recharts-surface")).toBeVisible();
   await page.screenshot({
     path: "../../reports/screenshots/03-building.png",
     fullPage: true,
@@ -108,6 +110,7 @@ for (const width of [1440, 1024, 390])
     await expect(
       page.getByRole("heading", { name: "Buildings to review" }),
     ).toBeVisible();
+    await expect(page.locator(".chart svg.recharts-surface")).toBeVisible();
     await page.screenshot({
       path: `../../reports/screenshots/portfolio-${width}.png`,
       fullPage: true,

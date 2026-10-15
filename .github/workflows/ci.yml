@@ -1,27 +1,68 @@
 name: verify
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   local-demo:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: portotherm_test
+          POSTGRES_USER: portotherm
+          POSTGRES_PASSWORD: ci-ephemeral-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U portotherm -d portotherm_test"
+          --health-interval 3s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+psycopg://portotherm:ci-ephemeral-only@127.0.0.1:5432/portotherm_test
+      APP_MODE: demo
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.11'
-      - uses: actions/setup-node@v4
+          cache: pip
+          cache-dependency-path: requirements.lock.txt
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '24'
           cache: npm
           cache-dependency-path: apps/web/package-lock.json
-      - run: pip install -r requirements.lock.txt
-      - run: python -m ruff check .
-      - run: python -m pytest -q
-      - run: python -m alembic upgrade head && python -m apps.api.seed
-      - run: npm ci && npm run build && npm test && npm run format:check
+      - name: Install Python dependencies
+        run: pip install -r requirements.lock.txt
+      - name: Python lint and tests
+        run: python -m ruff check . && python -m pytest -q
+      - name: Migrate and verify idempotent seed
+        run: python -m alembic upgrade head && python -m apps.api.seed && python -m apps.api.seed
+      - name: Web typecheck, build, tests and formatting
+        run: npm ci && npm run build && npm test && npm run format:check
         working-directory: apps/web
-      - run: npx playwright install --with-deps chromium
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
         working-directory: apps/web
-      - run: python -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8000 > /tmp/portotherm.log 2>&1 &
-      - run: for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/api/health && exit 0; sleep 1; done; exit 1
-      - run: npm run e2e
+      - name: Start demo API
+        run: python -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8000 > /tmp/portotherm.log 2>&1 &
+      - name: Wait for healthy API
+        run: for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/api/health && exit 0; sleep 1; done; exit 1
+      - name: Browser journeys and accessibility
+        run: npm run e2e
         working-directory: apps/web
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: browser-evidence
+          path: |
+            reports/e2e-results.json
+            reports/screenshots/
+            reports/accessibility/
+            apps/web/test-results/
+          retention-days: 7

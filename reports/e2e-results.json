@@ -117,12 +117,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2679,
+                  "duration": 3486,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T11:11:39.772Z",
+                  "startTime": "2026-10-15T11:45:24.871Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -151,12 +151,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1158,
+                  "duration": 1569,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T11:11:42.666Z",
+                  "startTime": "2026-10-15T11:45:28.548Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -166,7 +166,7 @@
           ],
           "id": "bf222bad70f76648f722-023aae6fe3e731d01c4f",
           "file": "journey.spec.ts",
-          "line": 104,
+          "line": 106,
           "column": 3
         },
         {
@@ -185,12 +185,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1179,
+                  "duration": 1540,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T11:11:43.834Z",
+                  "startTime": "2026-10-15T11:45:30.127Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -200,7 +200,7 @@
           ],
           "id": "bf222bad70f76648f722-f7b8d0c99ad139e414dc",
           "file": "journey.spec.ts",
-          "line": 104,
+          "line": 106,
           "column": 3
         },
         {
@@ -219,12 +219,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1119,
+                  "duration": 1569,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T11:11:45.024Z",
+                  "startTime": "2026-10-15T11:45:31.677Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -234,7 +234,185 @@
           ],
           "id": "bf222bad70f76648f722-aefa8464b710193f4c6f",
           "file": "journey.spec.ts",
-          "line": 104,
+          "line": 106,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "quality.spec.ts",
+      "file": "quality.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "search, sorting, pagination and reloadable building navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1354,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T11:45:33.315Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-31de798895bf6c2b6b43",
+          "file": "quality.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "reports use the applied period and reset requires explicit confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1123,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T11:45:34.681Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-e15078efaf42e23775b3",
+          "file": "quality.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "service errors stay visible without creating a replacement demo session",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T11:45:35.815Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-9a6182fa75dc2633c545",
+          "file": "quality.spec.ts",
+          "line": 70,
+          "column": 1
+        },
+        {
+          "title": "WCAG automated checks across product views at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2913,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T11:45:36.126Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-b6c9b3424b1eb8d9f4f9",
+          "file": "quality.spec.ts",
+          "line": 92,
+          "column": 3
+        },
+        {
+          "title": "WCAG automated checks across product views at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2794,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T11:45:39.046Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-ac6d72f67826c913179e",
+          "file": "quality.spec.ts",
+          "line": 92,
           "column": 3
         }
       ]
@@ -242,9 +420,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-15T11:11:39.318Z",
-    "duration": 6984.156,
-    "expected": 4,
+    "startTime": "2026-10-15T11:45:24.298Z",
+    "duration": 17700.899999999998,
+    "expected": 9,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

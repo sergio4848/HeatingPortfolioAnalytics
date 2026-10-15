@@ -183,7 +183,7 @@ def brand_guide():
         Spacer(1, 25),
         para("Palette and typography", "Heading2"),
         para(
-            "Navy #142B3D / Teal #006D77 / Background #F4F7F8 / Muted #526776. Warning amber #80520B on #FFF0D6 only for review issues. Segoe UI / Arial / system sans-serif. Fonts are not redistributed."
+            "Navy #142B3D / Teal #006D77 / Background #F4F7F8 / Muted #526776. Warning amber #80520B on #FFF0D6 only for review issues. App: self-hosted Inter Variable (SIL OFL-1.1). Deck: Arial. PDF: Helvetica. Inter license: packages/brand/licenses/Inter-OFL.txt."
         ),
         para("Spacing and minimum size", "Heading2"),
         para(
@@ -211,7 +211,7 @@ def brand_guide():
         ),
         para("Copy and licenses", "Heading2"),
         para(
-            "Slogan: See where to investigate. Use investigation priority, weather reference and data review. Avoid guaranteed savings and real-time claims. Lucide icons ISC; React, Vite and Recharts MIT. System fonts remain vendor licensed. Repository license decision remains with owner. Full copy, source links and usage detail: packages/brand/README.md."
+            "Slogan: See where to investigate. Use investigation priority, weather reference and data review. Avoid guaranteed savings and real-time claims. Lucide icons ISC; React, Vite and Recharts MIT. Inter font SIL OFL-1.1; proprietary system fonts remain vendor licensed. Repository license decision remains with owner. Full copy, source links and usage detail: packages/brand/README.md."
         ),
     ]
     write("Portotherm-Brand-Guide.pdf", story)
