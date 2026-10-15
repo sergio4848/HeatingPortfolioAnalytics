@@ -372,6 +372,8 @@ def xlsx_template():
 async def preview(
     file: UploadFile = File(...), mapping: str = Form("{}"), c=Depends(writer), s: Session = Depends(db)
 ):
+    if Path(file.filename or "").suffix.lower() not in (".csv", ".xlsx"):
+        raise HTTPException(415, "Only CSV and macro-free XLSX files are supported")
     content = await file.read(MAX_BYTES + 1)
     if len(content) > MAX_BYTES:
         raise HTTPException(413, "File limit is 2 MB")

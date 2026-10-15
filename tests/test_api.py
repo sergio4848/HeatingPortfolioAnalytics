@@ -93,7 +93,7 @@ def test_import_preview_commit_duplicate_and_mapping(client):
 
 
 def test_invalid_files(client):
-    assert client.post("/api/imports/preview", files={"file": ("x.xlsm", b"bad")}).status_code == 422
+    assert client.post("/api/imports/preview", files={"file": ("x.xlsm", b"bad")}).status_code == 415
     assert (
         client.post("/api/imports/preview", files={"file": ("x.csv", b"bad", "application/pdf")}).status_code
         == 415
