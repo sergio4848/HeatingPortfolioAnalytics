@@ -1,0 +1,14 @@
+{
+  "SYN-001": "normal",
+  "SYN-002": "cold_weather",
+  "SYN-003": "persistent_deviation",
+  "SYN-004": "missing_duplicates",
+  "SYN-005": "units_area",
+  "SYN-006": "meter_change",
+  "SYN-007": "intervention",
+  "SYN-008": "recent_intervention",
+  "SYN-009": "normal",
+  "SYN-010": "normal",
+  "SYN-011": "normal",
+  "SYN-012": "normal"
+}

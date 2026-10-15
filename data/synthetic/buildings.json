@@ -1,0 +1,129 @@
+[
+  {
+    "id": "SYN-001",
+    "name": "Building 01",
+    "heated_area_m2": 2110,
+    "building_type": "Panel",
+    "year": 1963,
+    "apartments": 29,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-002",
+    "name": "Building 02",
+    "heated_area_m2": 2420,
+    "building_type": "Masonry",
+    "year": 1966,
+    "apartments": 33,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-003",
+    "name": "Building 03",
+    "heated_area_m2": 2730,
+    "building_type": "Panel",
+    "year": 1969,
+    "apartments": 37,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-004",
+    "name": "Building 04",
+    "heated_area_m2": 3040,
+    "building_type": "Masonry",
+    "year": 1972,
+    "apartments": 41,
+    "renovation": "Unknown",
+    "quality_issues": [
+      "Missing months and a duplicate source row"
+    ]
+  },
+  {
+    "id": "SYN-005",
+    "name": "Building 05",
+    "heated_area_m2": 3350,
+    "building_type": "Panel",
+    "year": 1975,
+    "apartments": 45,
+    "renovation": "Unknown",
+    "quality_issues": [
+      "Mixed kWh/MWh converted; zero-area source row rejected"
+    ]
+  },
+  {
+    "id": "SYN-006",
+    "name": "Building 06",
+    "heated_area_m2": 3660,
+    "building_type": "Masonry",
+    "year": 1978,
+    "apartments": 49,
+    "renovation": "Unknown",
+    "quality_issues": [
+      "Meter/use changed in March 2026; pre-change baseline excluded"
+    ],
+    "meter_change": "2026-03-01"
+  },
+  {
+    "id": "SYN-007",
+    "name": "Building 07",
+    "heated_area_m2": 3970,
+    "building_type": "Panel",
+    "year": 1981,
+    "apartments": 53,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-008",
+    "name": "Building 08",
+    "heated_area_m2": 4280,
+    "building_type": "Masonry",
+    "year": 1984,
+    "apartments": 57,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-009",
+    "name": "Building 09",
+    "heated_area_m2": 4590,
+    "building_type": "Panel",
+    "year": 1987,
+    "apartments": 61,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-010",
+    "name": "Building 10",
+    "heated_area_m2": 4900,
+    "building_type": "Masonry",
+    "year": 1990,
+    "apartments": 65,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-011",
+    "name": "Building 11",
+    "heated_area_m2": 5210,
+    "building_type": "Panel",
+    "year": 1993,
+    "apartments": 69,
+    "renovation": "Unknown",
+    "quality_issues": []
+  },
+  {
+    "id": "SYN-012",
+    "name": "Building 12",
+    "heated_area_m2": 5520,
+    "building_type": "Masonry",
+    "year": 1996,
+    "apartments": 73,
+    "renovation": "Unknown",
+    "quality_issues": []
+  }
+]

@@ -1,0 +1,11 @@
+claim,type,source,date,verification,allowed_materials
+20–100 building target,hypothesis,Provided brief,2026-10-15,unvalidated,with hypothesis label
+5–10 buildings / six-week pilot,target,Provided brief,2026-10-15,proposed,pitch/pilot/site
+12 buildings /33 months,synthetic-result,synthetic.py seed4848,2026-10-15,reproducible,demo/pitch with disclosure
+Own-history reference,fact,analysis.py monthly-nnls-1.0,2026-10-15,code/tests,technical/demo
+LIAA consultation22 October,target,Provided brief,2026-10-15,calendar unverified,preparation only
+Incubation applications closed,fact,https://liaa.business.gov.lv/en/support-opportunities/business-incubation-aid,2026-10-15,official page read; recheck,research/questions only
+Brand legally available,hypothesis,name-screening.md,2026-10-15,NOT VERIFIED,provisional only
+Faster review,hypothesis,Pilot plan,2026-10-15,not measured,hypothesis only
+Actual savings/field accuracy,hypothesis,No field evidence,2026-10-15,NOT ESTABLISHED,do not assert
+PostgreSQL Compose and browser journey,fact,reports/validation.md,2026-10-15,locally tested,technical readiness only

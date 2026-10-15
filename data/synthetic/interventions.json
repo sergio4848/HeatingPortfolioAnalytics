@@ -1,0 +1,26 @@
+[
+  {
+    "id": "INT-1",
+    "building_id": "SYN-007",
+    "kind": "Hydraulic review",
+    "start": "2026-04-01",
+    "end": "2026-04-15",
+    "scope": "Synthetic balancing scenario",
+    "expected_effect": "Lower weather-adjusted consumption",
+    "cost": null,
+    "cost_source": "",
+    "notes": "No causal claim"
+  },
+  {
+    "id": "INT-2",
+    "building_id": "SYN-008",
+    "kind": "Maintenance",
+    "start": "2026-09-01",
+    "end": "2026-09-15",
+    "scope": "Synthetic recent intervention",
+    "expected_effect": "Review after more months",
+    "cost": null,
+    "cost_source": "",
+    "notes": "Not enough post-intervention data"
+  }
+]

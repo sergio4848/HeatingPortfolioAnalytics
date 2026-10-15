@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Portotherm",
+    "kicker": "HEATING PORTFOLIO ANALYTICS",
+    "body": [
+      "Prioritize buildings for investigation using existing monthly heat data.",
+      "Provisional brand. Local synthetic demonstration."
+    ],
+    "note": "Ürün adının geçici olduğunu ve tüm demo verisinin sentetik olduğunu açıkça söyle. Isıtma kontrolü veya kanıtlanmış tasarruf iddiası yok.",
+    "layout": "cover"
+  },
+  {
+    "title": "The investigation decision",
+    "kicker": "PROBLEM HYPOTHESIS",
+    "body": [
+      "Which building should we review first?",
+      "Monthly records can sit across files, with unclear units, missing periods and limited follow-up.",
+      "We will test this workflow problem with Latvian apartment managers."
+    ],
+    "note": "Bu problem henüz müşteri araştırmasıyla doğrulanmadı. Sahte müşteri sözü veya pazar büyüklüğü verme.",
+    "layout": "statement"
+  },
+  {
+    "title": "The first customer hypothesis",
+    "kicker": "CUSTOMER DISCOVERY",
+    "body": [
+      "20–100 buildings in a professionally managed apartment portfolio.",
+      "Buyer: management company decision maker",
+      "Daily user: portfolio manager or analyst",
+      "Technical reviewer: local energy specialist"
+    ],
+    "note": "20–100 aralığı pazar verisi değil segment varsayımı. İlk pilot yalnızca 5–10 binayı kapsayacak. Roller gerçek ekip üyeleri değildir.",
+    "layout": "roles"
+  },
+  {
+    "title": "A documented review workflow",
+    "kicker": "HOW IT WORKS",
+    "body": [
+      "01  Import monthly CSV or XLSX records",
+      "02  Check quality and compare with own history",
+      "03  Review the reason and assign a task",
+      "04  Record interventions and export evidence"
+    ],
+    "note": "Ardışık akışı anlat. Yeni sensör veya otomatik ısıtma kontrolü zorunlu değil. Gerçek hava kaynağının pilotta doğrulanması gerekiyor.",
+    "layout": "process"
+  },
+  {
+    "title": "A working synthetic portfolio",
+    "kicker": "LOCAL PRODUCT DEMONSTRATION",
+    "body": [
+      "Computed from the same analysis engine",
+      "Review priority, data quality and coverage remain separate."
+    ],
+    "note": "Kaynak: çalışan yerel uygulamadan reports/screenshots/07-portfolio-pitch.png. Sayılar reports/demo-statistics.json ile aynı motorun çıktısı. Sentetik sonuçlar müşteri başarısı değildir.",
+    "layout": "portfolio"
+  },
+  {
+    "title": "The reason stays visible",
+    "kicker": "EXPLAINABLE MONTHLY REFERENCE",
+    "body": [
+      "Own history + days + heating degree days",
+      "Training ends before evaluation begins.",
+      "Threshold, persistence, quality and alternative explanations stay visible.",
+      "A human decides what to investigate."
+    ],
+    "note": "Kaynak: çalışan uygulamadan 08-building-pitch.png. Yöntem docs/methodology.md. Sayaç değişimi, kullanım ve sıcak su karıştırıcıdır. İstatistiksel güven yüzdesi veya arıza olasılığı sunulmaz.",
+    "layout": "building"
+  },
+  {
+    "title": "Alternatives already exist",
+    "kicker": "DIFFERENTIATION TO TEST",
+    "body": [
+      "Spreadsheets and specialist review",
+      "Energy management: Kiona Energinet, EG EnerKey",
+      "Operational optimization: Danfoss Leanheat, gridX",
+      "Our hypothesis: a narrow monthly import-to-review workflow can be useful without a control project."
+    ],
+    "note": "Resmi kaynaklar 15 Ekim 2026 okundu: kiona.com/products/energinet; egsoftware.com/global/energy-management-sustainability/eg-enerkey; danfoss.com Leanheat Building; gridx.ai/product. Ayrıntı docs/research/alternatives.md. Üstünlük veya bilinmeyen özellik yokluğu iddia etme.",
+    "layout": "alternatives",
+    "source": "Official vendor pages, accessed 15 Oct 2026. Full links: docs/research/alternatives.md"
+  },
+  {
+    "title": "A six-week retrospective pilot",
+    "kicker": "PROPOSED SCOPE: 5–10 BUILDINGS",
+    "body": [
+      "Week 1  Scope, permissions and data inventory",
+      "Week 2  Import and quality review",
+      "Week 3  Historical reference and initial findings",
+      "Week 4  Manager and expert feedback",
+      "Week 5  Review tasks and intervention records",
+      "Week 6  Learnings and continuation decision"
+    ],
+    "note": "Altı haftada yıllık tasarruf kanıtı vaat edilmez. Ölçümler: veri kullanılabilirliği, inceleme süresi, eyleme değer bulgu, yanlış alarm nedenleri, görev tamamlanması. Hedefler birlikte kararlaştırılacak.",
+    "layout": "pilot"
+  },
+  {
+    "title": "A business model to validate",
+    "kicker": "COMMERCIAL HYPOTHESES",
+    "body": [
+      "Per-building subscription",
+      "Portfolio package",
+      "Setup or pilot fee + subscription",
+      "Discovery starts with manager interviews and a small authorized pilot.",
+      "Price and support costs remain unvalidated."
+    ],
+    "note": "Fiyat örnekleri docs/business/pricing.md içinde yalnızca görüşme hipotezi. Gerçekleşmiş gelir, müşteri veya ROI yok. Temizleme ve uzman emeği maliyeti kritik.",
+    "layout": "business"
+  },
+  {
+    "title": "Demonstrated and still pending",
+    "kicker": "READINESS",
+    "body": [
+      "Demonstrated locally",
+      "Synthetic import, quality checks, weather reference, review tasks, interventions and evidence reports.",
+      "Pending before a real pilot",
+      "Verified weather input, deployed identity flow, agreements, hosting and independent expert review."
+    ],
+    "note": "Demo hazır olmak pilot veya üretim hazır demek değil. Docker Compose ve PostgreSQL yerelde çalıştırıldı; sağlık, migration/seed ve temel tarayıcı akışı geçti. Gerçek kimlik sağlayıcı staging testi bekliyor.",
+    "layout": "readiness"
+  },
+  {
+    "title": "Founder details and open roles",
+    "kicker": "CAPACITY TO CONFIRM",
+    "body": [
+      "Founder biography and confirmed team information have not been supplied.",
+      "Needed for a credible pilot:",
+      "Local energy specialist",
+      "Building manager with authorized data access",
+      "Privacy and legal review capacity"
+    ],
+    "note": "İsim, eğitim, şirket, ekip veya geçmiş başarı uydurma. Düzenlenebilir docs/meeting/founder-profile.json dosyasını kurucu görüşmeden önce doğrulanmış bilgilerle doldurmalı.",
+    "layout": "team"
+  },
+  {
+    "title": "The next step with LIAA",
+    "kicker": "CONSULTATION REQUEST",
+    "body": [
+      "Introductions to relevant apartment managers",
+      "A local reviewer for technical validation",
+      "Guidance on the suitable support route and next action",
+      "The consultation is not program acceptance or funding approval."
+    ],
+    "note": "22 Ekim 2026 tarihi verilen brief kaynaklı; saat ve erişim özel olarak doğrulanacak. Resmi portal başvuruları kapalı gösteriyordu: liaa.business.gov.lv/en/support-opportunities/business-incubation-aid, erişim15 Ekim2026. Yabancı kurucu uygunluğu ve sonraki çağrı sorulacak; hibe hakkı iddia edilmez.",
+    "layout": "closing"
+  }
+]

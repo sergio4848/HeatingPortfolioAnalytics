@@ -1,0 +1,34 @@
+{
+  "presentations/exports/Portotherm-Brand-Guide.pdf": {
+    "bytes": 23430,
+    "sha256": "a79e80b58683bdea1b124b0cb4a813fc6bafffe8d2a1270e5ecacc9a13701864"
+  },
+  "presentations/exports/Portotherm-LIAA-release.pdf": {
+    "bytes": 514309,
+    "sha256": "6316e2545072fab818941c867167a7924250526a9260e900ed0cacf6fcf6f896"
+  },
+  "presentations/exports/Portotherm-LIAA-release.pptx": {
+    "bytes": 220287,
+    "sha256": "605710f4b62222df4395548e978e7f0c8dcb6c54b03efbca9c5413091469730f"
+  },
+  "presentations/exports/Portotherm-One-Pager.pdf": {
+    "bytes": 19762,
+    "sha256": "41c8863a4b38d8f47dab7ec1e22ea7c042d36c90d0e221acd68ce1ecb14334f2"
+  },
+  "presentations/exports/Portotherm-Pilot-Proposal.pdf": {
+    "bytes": 5799,
+    "sha256": "3ff9eb51ea5d4150e0a21ac1511390fd98675f75e7c0b043a7ed48a1799beb96"
+  },
+  "packages/brand/wordmark-light.svg": {
+    "bytes": 436,
+    "sha256": "3841ea967466fcb09093a67d807c44fbbeca03d486fbf0a82792fa5269831cea"
+  },
+  "packages/brand/symbol-light.svg": {
+    "bytes": 308,
+    "sha256": "285317fac8ac4036798a7884cdf3412cc1e083cc13efe1f4980ad229336cc2fb"
+  },
+  "reports/demo-evidence.pdf": {
+    "bytes": 5449,
+    "sha256": "4cd6e7acf9ef1ee9d35de2bed84b10e0cd1c7d02dc1916c3e948683a9a82bc07"
+  }
+}

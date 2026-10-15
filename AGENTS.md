@@ -1,0 +1,4 @@
+# Working rules
+Communicate in Turkish. External product/pitch English; Latvian needs review. Read STATUS.md, preserve user edits, use feature branches.
+Commands after venv activation: python -m alembic upgrade head; python -m apps.api.seed; python -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8000; python -m pytest -q; python -m ruff check .; web: npm ci, npm run build, npm test, npm run e2e (app running).
+No invented customer/founder/funding/savings/acceptance claims. Persistent synthetic disclosure. Exclude scenario labels and evaluation rows from training. Tenant scope every data/report access server-side. Never commit real records or publish demo. No external messages/purchases/accounts. Explicit row-error handling. Keep test evidence and gaps honest. No license selection without owner instruction.

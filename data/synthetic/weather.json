@@ -1,0 +1,233 @@
+{
+  "2024-01-01": {
+    "hdd": 540,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-02-01": {
+    "hdd": 470,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-03-01": {
+    "hdd": 370,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-04-01": {
+    "hdd": 190,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-05-01": {
+    "hdd": 65,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-06-01": {
+    "hdd": 8,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-07-01": {
+    "hdd": 0,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-08-01": {
+    "hdd": 4,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-09-01": {
+    "hdd": 80,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-10-01": {
+    "hdd": 230,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-11-01": {
+    "hdd": 380,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2024-12-01": {
+    "hdd": 490,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-01-01": {
+    "hdd": 540,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-02-01": {
+    "hdd": 470,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-03-01": {
+    "hdd": 370,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-04-01": {
+    "hdd": 190,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-05-01": {
+    "hdd": 65,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-06-01": {
+    "hdd": 8,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-07-01": {
+    "hdd": 0,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-08-01": {
+    "hdd": 4,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-09-01": {
+    "hdd": 80,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-10-01": {
+    "hdd": 230,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-11-01": {
+    "hdd": 380,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2025-12-01": {
+    "hdd": 490,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-01-01": {
+    "hdd": 729.0,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-02-01": {
+    "hdd": 634.5,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-03-01": {
+    "hdd": 370,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-04-01": {
+    "hdd": 190,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-05-01": {
+    "hdd": 65,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-06-01": {
+    "hdd": 8,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-07-01": {
+    "hdd": 0,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-08-01": {
+    "hdd": 4,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  },
+  "2026-09-01": {
+    "hdd": 80,
+    "coverage": 1,
+    "base_c": 15.5,
+    "source": "Synthetic weather, seed 4848",
+    "station": "SYNTHETIC"
+  }
+}

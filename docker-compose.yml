@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: portotherm
+      POSTGRES_USER: portotherm
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a local database password in .env}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U portotherm -d portotherm]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://portotherm:${POSTGRES_PASSWORD}@db:5432/portotherm
+      APP_MODE: demo
+      TRUSTED_ORIGINS: http://127.0.0.1:8000,http://localhost:8000
+    ports:
+      - 127.0.0.1:8000:8000
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+volumes:
+  db_data:

@@ -1,0 +1,10 @@
+{
+  "method": "monthly-nnls-1.0",
+  "disclosure": "Synthetic demo data \u2014 not measured customer results",
+  "buildings": 12,
+  "usable_reference": 11,
+  "quality_review": 3,
+  "investigation": 1,
+  "observed_kwh": 2828836.2579200002,
+  "flagged_building": "SYN-003"
+}

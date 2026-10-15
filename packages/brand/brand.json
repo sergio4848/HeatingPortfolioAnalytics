@@ -1,0 +1,17 @@
+{
+  "name": "Portotherm",
+  "status": "Provisional, clearance pending",
+  "tagline": "See where to investigate.",
+  "navy": "#142B3D",
+  "teal": "#006D77",
+  "background": "#F4F7F8",
+  "company": "Founder details pending",
+  "locale": "en",
+  "supportedLocales": [
+    "en"
+  ],
+  "preparedLocales": [
+    "lv"
+  ],
+  "description25": "Portotherm helps apartment portfolio managers prioritize buildings for investigation using existing monthly heat data, transparent weather comparisons, quality checks, review tasks, and documented follow-up evidence."
+}

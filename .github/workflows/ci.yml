@@ -1,0 +1,27 @@
+name: verify
+on: [push, pull_request]
+jobs:
+  local-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: pip install -r requirements.lock.txt
+      - run: python -m ruff check .
+      - run: python -m pytest -q
+      - run: python -m alembic upgrade head && python -m apps.api.seed
+      - run: npm ci && npm run build && npm test && npm run format:check
+        working-directory: apps/web
+      - run: npx playwright install --with-deps chromium
+        working-directory: apps/web
+      - run: python -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8000 > /tmp/portotherm.log 2>&1 &
+      - run: for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/api/health && exit 0; sleep 1; done; exit 1
+      - run: npm run e2e
+        working-directory: apps/web
