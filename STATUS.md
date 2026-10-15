@@ -37,6 +37,6 @@ The earlier automatic-review upload block was superseded by the user's explicit 
 - Added sortable/searchable/paginated table, accessible reset confirmation, reloadable routes, typed shared modules and lazy charts. Fixed applied-period/report consistency and server search/detail period handling.
 - Local verification: 43 Python, 10 frontend and 9 browser tests passed. Automated axe scans: zero violations for selected WCAG tags across seven views at 1440/390px. Manual/incomplete checks are recorded; no independent WCAG certification.
 - Production build, typecheck, Ruff, Prettier and npm audit passed (0 reported vulnerabilities at scan time). Updated 12-slide editable presentation, matching PDF, brand guide and actual screenshots.
-- Strengthened CI with PostgreSQL, migrations/repeated seed, Node 24, pinned action commits and retained browser evidence. Quality revision remote CI: pending push/check.
+- Strengthened CI with PostgreSQL, migrations/repeated seed, Node 24, pinned action commits and retained browser evidence. Quality revision b831a68 pushed and remote CI passed: https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38729923038. PostgreSQL migration/seed, Python checks, web checks and Chromium/axe completed successfully. Evidence: reports/github-actions-quality.json.
 
 The real-data pilot and production gates above remain open. Product quality improvements do not establish field results or production readiness.
