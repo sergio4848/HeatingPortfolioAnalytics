@@ -17,3 +17,6 @@ Initial oversized-upload status 422 changed to 413. Playwright Status selector c
 ## Remaining warning and scope
 One upstream Starlette TestClient deprecation warning: current test transport uses httpx and upstream recommends httpx2. Tests pass. No dependency warning hidden or silenced.
 Actual OIDC deployment, authorized customer data, real weather ingestion, expert model validation, legal agreements and operational production controls remain pending. Tests use real RSA signature verification with mocked JWKS transport, not a real identity provider. No independent accessibility audit, energy audit, field accuracy, annual savings or support eligibility claimed. GitHub CI run is only claimed if observed after push.
+
+## Remote delivery boundary
+Local commit and clean artifact package completed. The automatic approval reviewer rejected git push for lack of explicit remote-upload authorization. No remote push or GitHub CI execution is claimed. All local/Compose evidence above remains valid.

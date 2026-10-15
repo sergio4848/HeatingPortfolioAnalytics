@@ -27,3 +27,6 @@ Brand/company/domain clearance not completed. No actual customer/savings/field-a
 
 ## Next-session entry
 Use README and acceptance checklist. Keep demo/pilot/production separate. Before adding real data, complete the gates above. Remote delivery/CI status will be recorded after the final Git operation; do not assume a CI pass from local tests.
+
+## Git delivery
+Local implementation committed on feat/latvia-pilot-demo. Remote push was blocked by automatic approval review because explicit authorization to upload source/artifacts to the external remote was not established. No bypass attempted. User approval is required only for git push. Local source ZIP is delivered separately; application remains running locally. GitHub CI has not run.
