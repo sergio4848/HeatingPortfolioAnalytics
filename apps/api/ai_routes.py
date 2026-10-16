@@ -640,8 +640,18 @@ def create_router(db, context, writer, results, dates, audit):
             versions[bid] = current["analysis_version"]
             if bid not in gathered["building_ids"]:
                 gathered["building_ids"].append(bid)
-                gathered["metrics"].update({bid + "." + k: v for k, v in current["metrics"].items()})
-                gathered["sources"].extend([{**x, "id": bid + "::" + x["id"]} for x in current["sources"]])
+                gathered["metrics"].update(
+                    {
+                        bid + "." + k: {**v, "label": bid + " / " + v["label"]}
+                        for k, v in current["metrics"].items()
+                    }
+                )
+                gathered["sources"].extend(
+                    [
+                        {**x, "id": bid + "::" + x["id"], "title": bid + " / " + x["title"]}
+                        for x in current["sources"]
+                    ]
+                )
             return current
 
         try:

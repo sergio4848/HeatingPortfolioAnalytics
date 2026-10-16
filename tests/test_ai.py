@@ -417,6 +417,7 @@ def test_assistant_valid_tool_roundtrip(client, monkeypatch):
         json={"approved_data_transfer": True, "question": "Show evidence for the selected building"},
     ).json()
     assert result["content"]["metric_ids"] == ["SYN-003.deviation"]
+    assert result["evidence"]["metrics"]["SYN-003.deviation"]["label"].startswith("SYN-003 / ")
     assert len(calls) == 2
     assert calls[1]["messages"][-1]["content"][0]["type"] == "tool_result"
     assert client.get("/api/ai/responses/" + result["id"]).json()["current"]

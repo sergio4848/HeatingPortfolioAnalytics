@@ -38,3 +38,10 @@ Başarı ölçütlerini pilot öncesi birlikte kararlaştırırız: kullanılabi
 Excel, danışmanlar ve enerji yönetim platformları anlamlı alternatiflerdir. Dar kapsamlı aylık inceleme akışının abonelik ve destek maliyetini karşılayacak değer yaratıp yaratmadığını sınamak istiyoruz. Fiyat ve pazar uyumu varsayımdır.
 
 Bu görüşmede uygun yöneticilere bağlantı, yerel teknik değerlendirici ve doğru destek yolu konusunda rehberlik istiyoruz. Kurucu bilgisi, hukuki yapı ve gerçek veriyle çalışma koşulları netleşmeli. Görüşmeden somut sonraki adım ve gereken kanıt listesiyle ayrılmak istiyoruz.
+
+
+## Optional Claude addition
+
+EN: The numerical engine calculates the weather reference. Claude can suggest column mappings, explain supplied evidence and draft investigation tasks. Managers review the sources and explicitly approve task creation. API setup and approved data transfer are required; live API verification remains pending.
+
+TR: Hesaplama motoru hava referansını üretir. Claude kolon eşleştirmesi önerebilir, verilen kanıtı açıklayabilir ve inceleme görevi taslağı hazırlayabilir. Yönetici kaynakları inceler ve görev kaydını açıkça onaylar. API kurulumu ve veri aktarımı izni gerekir; canlı API doğrulaması bekliyor.

@@ -57,3 +57,8 @@ Backend evidence/Claude features and all UI connections completed. Added notes/t
 Local: 95 Python and 10 frontend tests passed; build/typecheck/Ruff/Prettier passed. Final browser suite includes 23 scenarios, 55 view/width combinations and desktop/mobile axe scans; report and screenshots in reports. Tablet metrics overflow, gallery Home alignment, stale import approval, Findings filtering, Settings hierarchy and task provenance display fixed. See reports/claude-update.md for scope and limits.
 
 Current twelve-slide editable presentation/matching PDF and five standalone PDF pages regenerated/rendered/inspected. No live Anthropic test: key unavailable locally. Real-data/IdP/weather/legal/expert/production gates remain open. Local Docker daemon unavailable; SQLite QA used without replacing the existing Docker volume. Push/remote CI verification follows; do not infer remote success from local tests.
+
+### Remote verification
+Implementation b346663 pushed to the explicitly authorized origin/feat/latvia-pilot-demo. GitHub Actions run 38935202356 completed successfully: https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38935202356. Actual logs confirm 95 Python, 10 frontend and 23 browser tests. PostgreSQL 17 migration/repeated seed and all build/format checks passed. Evidence: reports/github-actions-claude.json.
+
+Final usability refinement prefixes assistant metric/source labels with the backend building ID, preventing ambiguity across buildings; all 52 AI tests passed after this change. Final push also includes cropped actual hero screenshots and this verification record. Every push triggers the same full CI; final-HEAD status is verified at delivery. Live API and real-data gates remain as described above.

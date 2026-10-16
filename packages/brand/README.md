@@ -16,3 +16,6 @@ Minimum symbol 16 px, prefer 24/32 px. Minimum wordmark 128 px wide. Clear space
 Use investigation priority, weather reference, observed deviation, data review and scenario estimate. Avoid guaranteed saving, fault certainty, real-time and endorsement claims. Latvian copy requires a human reviewer.
 
 Original logo: repository license decision pending. Lucide ISC https://lucide.dev/license. React/Vite/Recharts MIT. Inter font SIL OFL-1.1. Proprietary system fonts remain under vendor/system licenses and are not redistributed. See THIRD_PARTY.md and dependency locks.
+
+
+Current UI tokens and landing/workspace rules: [design system](../../docs/design/system.md), [motion lifecycle](../../docs/design/motion.md), [four reviewed sources and licenses](../../docs/design/references.md). Existing identity remains provisional; this update does not rename the product.

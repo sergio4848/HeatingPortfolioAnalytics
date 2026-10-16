@@ -1,0 +1,177 @@
+{
+  "run": {
+    "id": 38935202356,
+    "head_sha": "b3466635d4a1ad166673264d067260c1c0066faa",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38935202356",
+    "created_at": "2026-10-16T16:51:33Z",
+    "updated_at": "2026-10-16T16:54:07Z"
+  },
+  "jobs": {
+    "id": 117088846480,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38935202356/job/117088846480",
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-16T16:51:37Z",
+        "completed_at": "2026-10-16T16:51:39Z"
+      },
+      {
+        "name": "Initialize containers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-16T16:51:39Z",
+        "completed_at": "2026-10-16T16:51:52Z"
+      },
+      {
+        "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-16T16:51:52Z",
+        "completed_at": "2026-10-16T16:51:53Z"
+      },
+      {
+        "name": "Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-16T16:51:53Z",
+        "completed_at": "2026-10-16T16:51:56Z"
+      },
+      {
+        "name": "Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-16T16:51:56Z",
+        "completed_at": "2026-10-16T16:51:57Z"
+      },
+      {
+        "name": "Install Python dependencies",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-10-16T16:51:57Z",
+        "completed_at": "2026-10-16T16:52:10Z"
+      },
+      {
+        "name": "Python lint and tests",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7,
+        "started_at": "2026-10-16T16:52:10Z",
+        "completed_at": "2026-10-16T16:52:31Z"
+      },
+      {
+        "name": "Migrate and verify idempotent seed",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8,
+        "started_at": "2026-10-16T16:52:31Z",
+        "completed_at": "2026-10-16T16:52:32Z"
+      },
+      {
+        "name": "Web typecheck, build, tests and formatting",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-10-16T16:52:32Z",
+        "completed_at": "2026-10-16T16:52:39Z"
+      },
+      {
+        "name": "Install Chromium",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 10,
+        "started_at": "2026-10-16T16:52:39Z",
+        "completed_at": "2026-10-16T16:53:04Z"
+      },
+      {
+        "name": "Start demo API",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11,
+        "started_at": "2026-10-16T16:53:04Z",
+        "completed_at": "2026-10-16T16:53:04Z"
+      },
+      {
+        "name": "Wait for healthy API",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 12,
+        "started_at": "2026-10-16T16:53:04Z",
+        "completed_at": "2026-10-16T16:53:06Z"
+      },
+      {
+        "name": "Browser journeys and accessibility",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13,
+        "started_at": "2026-10-16T16:53:06Z",
+        "completed_at": "2026-10-16T16:53:56Z"
+      },
+      {
+        "name": "Preserve browser evidence",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 14,
+        "started_at": "2026-10-16T16:53:56Z",
+        "completed_at": "2026-10-16T16:53:58Z"
+      },
+      {
+        "name": "Post Run actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 25,
+        "started_at": "2026-10-16T16:53:58Z",
+        "completed_at": "2026-10-16T16:54:00Z"
+      },
+      {
+        "name": "Post Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 26,
+        "started_at": "2026-10-16T16:54:00Z",
+        "completed_at": "2026-10-16T16:54:03Z"
+      },
+      {
+        "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 27,
+        "started_at": "2026-10-16T16:54:03Z",
+        "completed_at": "2026-10-16T16:54:03Z"
+      },
+      {
+        "name": "Stop containers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 28,
+        "started_at": "2026-10-16T16:54:03Z",
+        "completed_at": "2026-10-16T16:54:04Z"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 29,
+        "started_at": "2026-10-16T16:54:04Z",
+        "completed_at": "2026-10-16T16:54:04Z"
+      }
+    ]
+  },
+  "observed_test_counts": {
+    "python": 95,
+    "frontend": 10,
+    "browser": 23
+  },
+  "scope": "Linux GitHub runner, PostgreSQL 17 service, actual pushed commit. Live Claude not tested."
+}

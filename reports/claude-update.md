@@ -28,3 +28,8 @@ No live Anthropic request was made: neither process environment nor app-local ig
 Remaining pilot gates: provider account/model availability and all five live feature paths; expert assessment of explanation relevance and residual language hallucinations; authorized real records, data-processing terms/provider policy, real weather/station matching, external identity/browser login, reviewed Latvian copy. OCR remains deferred. Hard process cancellation, general API rate limiting, retention/backups/session cleanup and production operations remain hardening work. Current bounded AI validation cannot establish causality, fault diagnosis or guaranteed savings.
 
 Design/source/license details: `docs/design/references.md`. AI flows/security/pricing source/date: `docs/technical/ai-architecture.md`. Remote Actions evidence is added after the authorized push; local success alone is not remote CI success.
+
+
+## Observed remote result
+
+b346663 passed [Actions run 38935202356](https://github.com/sergio4848/HeatingPortfolioAnalytics/actions/runs/38935202356): 95 Python, 10 frontend and 23 browser tests; PostgreSQL migration/repeated seed passed. Detailed run/steps: github-actions-claude.json. The final assistant building-label refinement passed all 52 AI tests locally and is included in the subsequent verification push.
