@@ -64,7 +64,12 @@ def read_upload(name, content, mapping=None):
     maps = json.loads(mapping) if isinstance(mapping, str) and mapping else mapping or {}
     if not isinstance(maps, dict):
         raise ValueError("Column mapping must be an object")
-    mapped = [{maps.get(k, k): v for k, v in row.items()} for row in rows]
+    if any(k not in headers or not isinstance(v, str) for k, v in maps.items()):
+        raise ValueError("Mapping must use known source headers and text target fields")
+    targets = [maps.get(k, k) for k in headers if maps.get(k, k) != "__ignore__"]
+    if len(targets) != len(set(targets)):
+        raise ValueError("Two source columns cannot map to the same target field")
+    mapped = [{maps.get(k, k): v for k, v in row.items() if maps.get(k, k) != "__ignore__"} for row in rows]
     clean, issues = validate(mapped)
     return {
         "headers": headers,

@@ -40,3 +40,8 @@ Before transfer agree parties, controller/processor roles, access, hosting, rete
 ## Immediate request
 
 Identify a willing manager and local energy reviewer, then agree a small authorized sample. Clarify appropriate advisory/support route. No grant, acceptance or Latvian incorporation is assumed.
+
+
+## Optional Claude evaluation
+
+Column suggestions, evidence-backed explanations and investigation task drafts are optional, consent-gated assistance. The analysis engine computes consumption/reference/deviation; Claude explains supplied evidence. A person reviews mapping and explicitly approves task creation. Dated notes/text PDFs support cited maintenance summaries; temporal association is not causality. Real-data transfer to Anthropic needs an agreed legal basis and organization permission. Live API behavior and expert-rated usefulness still require validation. OCR, heating control and guaranteed savings remain excluded.

@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import create_engine, String, JSON, select
+from sqlalchemy import create_engine, String, JSON, Integer, select
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session
 
 
@@ -13,6 +13,15 @@ class Entity(Base):
     kind: Mapped[str] = mapped_column(String(40), primary_key=True)
     id: Mapped[str] = mapped_column(String(120), primary_key=True)
     data: Mapped[dict] = mapped_column(JSON)
+
+
+class AIQuota(Base):
+    __tablename__ = "ai_quotas"
+    tenant: Mapped[str] = mapped_column(String(80), primary_key=True)
+    day: Mapped[str] = mapped_column(String(10), primary_key=True)
+    requests: Mapped[int] = mapped_column(Integer, default=0)
+    tokens: Mapped[int] = mapped_column(Integer, default=0)
+    cost_microusd: Mapped[int] = mapped_column(Integer, default=0)
 
 
 engine = create_engine(os.getenv("DATABASE_URL", "sqlite:///./portotherm.db"), pool_pre_ping=True)

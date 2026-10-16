@@ -55,6 +55,14 @@ def validate(rows):
             if bid in areas and area != areas[bid]:
                 raise ValueError("Heated area changed: split or review the building baseline before import")
             seen.add(key)
+            cost = row.get("cost")
+            currency = str(row.get("currency", "")).strip()
+            if cost not in (None, ""):
+                cost = number(cost)
+                if cost < 0 or currency != "EUR" or not row.get("source_reference"):
+                    raise ValueError("Optional cost requires a non-negative value, explicit EUR currency and a source; it is never converted to heat")
+            elif currency:
+                raise ValueError("Currency without a cost value requires review")
             areas[bid] = area
             periods.setdefault(bid, []).append((start, end))
             clean.append(
@@ -67,6 +75,7 @@ def validate(rows):
                     heated_area_m2=area,
                     includes_dhw=str(row["includes_dhw"]).lower(),
                     source_reference=str(row.get("source_reference", ""))[:250],
+                    **({"cost": cost, "currency": currency} if cost not in (None, "") else {}),
                 )
             )
         except (ValueError, KeyError, TypeError) as exc:

@@ -118,6 +118,10 @@ for (const [i, c] of slides.entries()) {
       688,
       430,
     );
+  } else if (c.layout === "ai") {
+    await image(s, "reports/screenshots/09-ai-evidence.png", 66, 210, 660, 400);
+    c.body.slice(0,3).forEach((line,j)=>text(s,line,770,235+j*105,440,85,30,teal,true));
+    text(s,c.body[3],770,560,420,85,24,muted);
   } else if (c.layout === "readiness") {
     text(s, c.body[0], 70, 225, 480, 60, 30, teal, true);
     text(s, c.body[1], 70, 310, 480, 210, 30);

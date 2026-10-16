@@ -30,3 +30,8 @@ Manual browser viewport checks used 1440×1000, 390×844 and 360×844. These are
 The PNGs are actual Playwright captures of the running app, including all seven views at 1440/390px, task forms and both reset dialogs. CI retains this directory with browser evidence. Source run results: ../e2e-results.json. Actual remote results are recorded in STATUS.md and linked in the delivery response.
 
 Real-data pilot, brand clearance and production gates remain unchanged.
+
+
+## 16 October update
+
+Current evidence adds eleven views at 1440/1024/768/390/360px, landing gallery/route/reduced-motion checks, optional AI controls, source notes/error/long-name states and local performance observations. See [current validation](../claude-update.md); older review findings remain historical.

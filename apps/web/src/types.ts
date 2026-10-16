@@ -37,6 +37,11 @@ export type Building = {
   trace: Trace[];
 };
 export type Task = {
+  title?: string;
+  ai_draft_id?: string;
+  analysis_version?: string;
+  closure_records?: string[];
+  source_ids?: string[];
   id: string;
   building_id: string;
   status: string;

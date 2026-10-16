@@ -35,3 +35,8 @@ Quality implementation b831a68 passed the expanded Linux/PostgreSQL GitHub workf
 All seven views manually inspected in the running browser; extended overflow matrix covers 1440/1024/390/360px. Final local suite: 15/15 browser tests, 10/10 frontend tests, typecheck/build/format passed. Detailed findings, fixes and actual screenshots: ui-review/README.md. No Python changes in this follow-up; the full suite runs again in GitHub CI.
 
 Desktop/mobile implementation 9895370 passed GitHub Actions run 38745310633: 43 Python, 10 frontend and 15 browser tests, PostgreSQL migration/repeated seed and browser evidence upload successful. Actual metadata: ui-review/github-actions.json.
+
+
+## 16 October Claude/product revision
+
+Current check scope and truthful live/mock distinction: [claude-update.md](claude-update.md). Twelve-slide Claude PPTX/PDF, one-page overview, three-page pilot and one-page brand guide regenerated and visually inspected. Local checks: 95 Python, 10 frontend; complete browser report records the combined suite. No live provider test, physical-device test or native PowerPoint test claimed.

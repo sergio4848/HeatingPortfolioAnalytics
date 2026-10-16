@@ -9,10 +9,10 @@ Prioritize buildings for investigation using existing monthly heat consumption d
 Professional apartment managers in Latvia, initially portfolios of 20-100 buildings. Buyer demand and time savings remain unvalidated.
 
 ## The workflow
-Import CSV/XLSX; validate units, area and periods; compare with the building's own history and weather; review explanations; assign follow-up and export evidence.
+Import and validate CSV/XLSX. The engine computes the weather reference. Optional Claude suggests column mapping, evidence-backed explanations and investigation task drafts. A person reviews and explicitly approves tasks.
 
 ## A reviewable local demonstration
-12 synthetic buildings, 33 months, 11 usable references and 1 investigation priority. Synthetic demo data - not measured customer results. The same engine drives screens and reports.
+12 synthetic buildings, 33 months, 11 usable references and 1 investigation priority. Synthetic demo data - not measured customer results. The same engine drives screens and reports. Claude requires backend configuration and approved data transfer; live API verification is pending.
 
 ## The proposed pilot
 5-10 buildings, six weeks of retrospective review. Deliver a quality report, explained findings, expert decisions and a continuation recommendation. Agree usability and review metrics together.

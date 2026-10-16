@@ -1,7 +1,15 @@
 {
   "presentations/exports/Portotherm-Brand-Guide.pdf": {
-    "bytes": 23491,
-    "sha256": "de62b028521ccf97eff0c6ff317a3cdc46bbdd358c2feda673bca77361186975"
+    "bytes": 23605,
+    "sha256": "2a7aab120e066c39a2f42088e7d6970a786e7a0fa9def692e3e07ff90f246e64"
+  },
+  "presentations/exports/Portotherm-LIAA-Claude.pdf": {
+    "bytes": 586534,
+    "sha256": "0c21b59db44c1ca17d44739b56a76350b5577635b67628661c4dd7e75a77c899"
+  },
+  "presentations/exports/Portotherm-LIAA-Claude.pptx": {
+    "bytes": 343622,
+    "sha256": "8f3e0ad9fd6726a1be946de3bc7241de4a497a23ff622d3da878b16e7fe32fa0"
   },
   "presentations/exports/Portotherm-LIAA-quality.pdf": {
     "bytes": 532063,
@@ -12,23 +20,123 @@
     "sha256": "7b365b503a8bfac5911d95d7329e4e624e6af09eaa957d98a7159311f60bf51b"
   },
   "presentations/exports/Portotherm-One-Pager.pdf": {
-    "bytes": 19762,
-    "sha256": "41c8863a4b38d8f47dab7ec1e22ea7c042d36c90d0e221acd68ce1ecb14334f2"
+    "bytes": 19851,
+    "sha256": "2760f768ba11ad858322f16fd7d78307fb49ca822af482ce08e205d661550d9b"
   },
   "presentations/exports/Portotherm-Pilot-Proposal.pdf": {
-    "bytes": 5799,
-    "sha256": "3ff9eb51ea5d4150e0a21ac1511390fd98675f75e7c0b043a7ed48a1799beb96"
+    "bytes": 5947,
+    "sha256": "41668363c382ccc178756fe97141f4f89ad967bcde78f45827e42e882c06eade"
   },
-  "packages/brand/wordmark-light.svg": {
-    "bytes": 436,
-    "sha256": "3841ea967466fcb09093a67d807c44fbbeca03d486fbf0a82792fa5269831cea"
+  "packages/brand/brand.json": {
+    "bytes": 571,
+    "sha256": "50f609c69e73f1065ce39d45541c303dd6bc7941535d610de975a2f276afd89e"
+  },
+  "packages/brand/direction-2.svg": {
+    "bytes": 160,
+    "sha256": "c70b2600a1358c978455fbce068c6049beb4dff992cea06fc8d20c12f9ff833c"
+  },
+  "packages/brand/direction-3.svg": {
+    "bytes": 165,
+    "sha256": "79784641f5a6ac57fa836ab15e8287efa3f3a3eb560a59e6f21330acbf7de1c1"
+  },
+  "packages/brand/icon-16.png": {
+    "bytes": 415,
+    "sha256": "c0b75fb9fe846596eb6cb56bc0229e51f527be133029096e83c65bc43a8663b5"
+  },
+  "packages/brand/icon-192.png": {
+    "bytes": 2193,
+    "sha256": "0e52771d4d2f8495a374a65da1810f4947047cbbab1990ed49aab51ee5398949"
+  },
+  "packages/brand/icon-24.png": {
+    "bytes": 566,
+    "sha256": "05da4d6364cb11666c68eea1044bcc1aefc61914b10b8c216d1e4acf430d2ad9"
+  },
+  "packages/brand/icon-32.png": {
+    "bytes": 613,
+    "sha256": "1f9768831717067b8c2a2f0ed3ea407fbfa23a26a88a15c4bbe3655d238f86bd"
+  },
+  "packages/brand/icon-512.png": {
+    "bytes": 7835,
+    "sha256": "cdd21e4cfd25b2376cf64d2f73b6c6a64cc4e93d378aca0cca0f7196d453b19b"
+  },
+  "packages/brand/licenses/Inter-OFL.txt": {
+    "bytes": 4477,
+    "sha256": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345"
+  },
+  "packages/brand/README.md": {
+    "bytes": 2994,
+    "sha256": "65df4f690b6c95161b01e152e80228a845cab53d80db389a126eaf4d4ec69617"
+  },
+  "packages/brand/symbol-dark-1x.png": {
+    "bytes": 596,
+    "sha256": "05451209326e732cc9ba70f9e7a2e64d2de191ab6086a127b2559714bf08d5ab"
+  },
+  "packages/brand/symbol-dark-4x.png": {
+    "bytes": 1786,
+    "sha256": "f4d33b4a0636527111cdcda84579edbc4a619bcac3404421215ba916dbf61181"
+  },
+  "packages/brand/symbol-dark.svg": {
+    "bytes": 311,
+    "sha256": "4856340d6264782cff206bb757117317bc87af7bee5fa845e479cb43d29d90be"
+  },
+  "packages/brand/symbol-light-1x.png": {
+    "bytes": 550,
+    "sha256": "145e8c8c58d4df6ecfcb396d491befa856eebecb62d8fb6c177f489aef85994c"
+  },
+  "packages/brand/symbol-light-4x.png": {
+    "bytes": 1473,
+    "sha256": "1815b866d6350480825941854882ca709e2362db729600aa4671df6c1466ce39"
   },
   "packages/brand/symbol-light.svg": {
     "bytes": 308,
     "sha256": "285317fac8ac4036798a7884cdf3412cc1e083cc13efe1f4980ad229336cc2fb"
   },
-  "reports/demo-evidence.pdf": {
-    "bytes": 5449,
-    "sha256": "4cd6e7acf9ef1ee9d35de2bed84b10e0cd1c7d02dc1916c3e948683a9a82bc07"
+  "packages/brand/symbol-mono-1x.png": {
+    "bytes": 442,
+    "sha256": "1b0982863fb9fbb04fc7aa36c6358de8d362b81a84481baa4d4d8284ba9111db"
+  },
+  "packages/brand/symbol-mono-4x.png": {
+    "bytes": 1179,
+    "sha256": "5678c802001232f7cf76f6135dab247ad67a700911414ab1165358db70a3c992"
+  },
+  "packages/brand/symbol-mono.svg": {
+    "bytes": 308,
+    "sha256": "3cfe4296590767364021a503d9a7a8d19626a9dd0b93bd6c2fca81bd10080d20"
+  },
+  "packages/brand/wordmark-dark-1x.png": {
+    "bytes": 2654,
+    "sha256": "d2ddadf9876225b24670b0ee394f44e064b268f55706dbe401d9d92706082889"
+  },
+  "packages/brand/wordmark-dark-4x.png": {
+    "bytes": 12435,
+    "sha256": "7e3108fb9992d14dcbf6c28ff701d041f4dd033824e0eb40d2e69d8dcceb901b"
+  },
+  "packages/brand/wordmark-dark.svg": {
+    "bytes": 439,
+    "sha256": "06fdf5503700ff4a83f07f5e89a49f1f54d91c6b5c770db93f946588480f7586"
+  },
+  "packages/brand/wordmark-light-1x.png": {
+    "bytes": 2482,
+    "sha256": "88f805e29cc36ae031843c8aba84c45ef445a43707addffa255eb756abcc71df"
+  },
+  "packages/brand/wordmark-light-4x.png": {
+    "bytes": 10321,
+    "sha256": "6eb8bdac34f6a65dcac63cf649f78b4b9306bbc7123644ac7415b2d3490f031e"
+  },
+  "packages/brand/wordmark-light.svg": {
+    "bytes": 436,
+    "sha256": "3841ea967466fcb09093a67d807c44fbbeca03d486fbf0a82792fa5269831cea"
+  },
+  "packages/brand/wordmark-mono-1x.png": {
+    "bytes": 2299,
+    "sha256": "5e913495b1a22a629920d1058905f9fdab3e249b2e9669ee77494e5e5ec78bc0"
+  },
+  "packages/brand/wordmark-mono-4x.png": {
+    "bytes": 9856,
+    "sha256": "888b645051c5dee66c06161ffa7092db45ba47e1cdfbb72e9ab5cac4edf70031"
+  },
+  "packages/brand/wordmark-mono.svg": {
+    "bytes": 436,
+    "sha256": "8a219960f1f1b7210624ef9016d050c153dda4a4252be897bbffc5845f646952"
   }
 }

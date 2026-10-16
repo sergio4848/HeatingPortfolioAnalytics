@@ -15,3 +15,6 @@ Shared domain types, typed API/validation errors, formatting and portfolio/repor
 Draft date inputs are separate from the applied range. A successful portfolio response applies the range; reports use that same range. A request sequence prevents older responses overwriting newer selections. Server building detail accepts and validates the same date range. Consumption records are grouped once per analysis request rather than rescanned for every building. This is a structural efficiency change, not a measured production performance claim.
 
 GitHub CI uses pinned official action release commits, Node 24, Python 3.11, ephemeral PostgreSQL 17, migration/repeated-seed checks, frontend checks and real Chromium journeys/axe scans. API unit tests use isolated SQLite fixtures; browser integration tests exercise PostgreSQL in CI/Compose. Browser evidence is retained for seven days.
+
+
+Optional Claude workflows, source documents, AIQuota migration and approval boundaries: [AI architecture](ai-architecture.md). The numerical engine remains authoritative.

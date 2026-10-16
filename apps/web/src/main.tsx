@@ -22,7 +22,6 @@ import { createRoot } from "react-dom/client";
 import {
   ArrowUpRight,
   ArrowRight,
-  Building2,
   LayoutDashboard,
   Upload,
   ClipboardList,
@@ -36,9 +35,17 @@ import {
   Layers,
 } from "lucide-react";
 import brand from "../../../packages/brand/brand.json";
+import "./tokens.css";
+import {
+  AIColumnMapping,
+  AIWorkbench,
+  AISettingsPanel,
+  PortfolioAssistant,
+} from "./features/ai";
 import "./style.css";
 import "./theme.css";
 
+const Landing = lazy(() => import("./features/landing"));
 const PortfolioChart = lazy(() =>
   import("./features/charts").then((m) => ({ default: m.PortfolioChart })),
 );
@@ -64,6 +71,7 @@ function App() {
     [preview, setPreview] = useState<Preview | null>(null),
     [mapping, setMapping] = useState<Record<string, string>>({}),
     [policy, setPolicy] = useState("reject");
+  const [mappingDirty, setMappingDirty] = useState(false);
   const [task, setTask] = useState<Task | null>(null),
     [audit, setAudit] = useState<AuditEntry[] | null>(null);
   const [orgName, setOrgName] = useState(""),
@@ -107,6 +115,7 @@ function App() {
     setFile(null);
     if (fileInput.current) fileInput.current.value = "";
     setMapping({});
+    setMappingDirty(false);
     setAudit(null);
     setToast("Your isolated demo session has been reset.");
   }
@@ -186,6 +195,7 @@ function App() {
     setPreview(
       await api<Preview>("/imports/preview", { method: "POST", body: form }),
     );
+    setMappingDirty(false);
   }
   const Downloads = ({ bid = "" }: { bid?: string }) => (
     <>
@@ -216,177 +226,21 @@ function App() {
         <span className="disclosure-right">LOCAL DEMO · MONTHLY ANALYSIS</span>
       </div>
       {page === "home" ? (
-        <>
-          <nav className="landing-nav">
-            <a className="brand" href="#/" onClick={() => setPage("home")}>
-              <img src="/symbol.svg" alt="" />
-              {brand.name}
-              <small>PROVISIONAL</small>
-            </a>
-            <a href="#pilot">
-              Pilot scope <ArrowUpRight size={15} />
-            </a>
-          </nav>
-          <main className="landing" id="main-content" tabIndex={-1}>
-            <section className="hero">
-              <div>
-                <p className="eyebrow">HEATING PORTFOLIO ANALYTICS</p>
-                <h1>
-                  Know which building
-                  <br />
-                  to look at <em>first.</em>
-                </h1>
-                <p className="lead">
-                  Prioritize buildings for investigation using existing heat
-                  consumption data. Understand the evidence before you act.
-                </p>
-                <button
-                  onClick={() => setPage("portfolio")}
-                  disabled={!data || busy}
-                >
-                  Explore the demo <ArrowRight size={18} />
-                </button>
-                <p className="small muted">
-                  {buildings.length} synthetic buildings · No new sensors
-                  required · Human review
-                </p>
-              </div>
-              <div className="hero-preview">
-                <div className="preview-label">
-                  <span>PORTFOLIO / INVESTIGATION QUEUE</span>
-                  <Activity size={18} />
-                </div>
-                <div className="preview-summary">
-                  <div>
-                    <span>PORTFOLIO IN VIEW</span>
-                    <strong>
-                      {buildings.length}
-                      <small>synthetic buildings</small>
-                    </strong>
-                  </div>
-                  <span className="preview-health">
-                    <ShieldCheck size={15} /> Traceable evidence
-                  </span>
-                </div>
-                <h2>
-                  One portfolio.
-                  <br />A clearer starting point.
-                </h2>
-                {buildings.slice(0, 3).map((b) => (
-                  <button
-                    className="preview-row"
-                    key={b.id}
-                    onClick={() => openBuilding(b.id)}
-                  >
-                    <span className="building-icon">
-                      <Building2 />
-                    </span>
-                    <span>
-                      <strong>{b.name}</strong>
-                      <small>
-                        {b.id} · {b.quality}
-                      </small>
-                    </span>
-                    <Status value={b.status} />
-                    <ArrowUpRight size={16} />
-                  </button>
-                ))}
-                <p className="small">
-                  Calculated from monthly synthetic records. Human review
-                  required.
-                </p>
-              </div>
-            </section>
-            <section className="how">
-              <p className="eyebrow">FROM FILES TO FOLLOW-UP</p>
-              <h2>A review process you can explain.</h2>
-              <div className="three">
-                {[
-                  [
-                    "01",
-                    "Bring existing data",
-                    "Import monthly CSV or XLSX records. See missing values, duplicates and unit issues before analysis.",
-                  ],
-                  [
-                    "02",
-                    "Understand the difference",
-                    "Compare each building with its own history and weather reference. Keep data limitations visible.",
-                  ],
-                  [
-                    "03",
-                    "Record the next step",
-                    "Assign a review, document an intervention and export the evidence for a conversation.",
-                  ],
-                ].map(([n, h, p]) => (
-                  <article key={n}>
-                    <span>{n}</span>
-                    <h3>{h}</h3>
-                    <p>{p}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
-            <section id="pilot" className="pilot">
-              <div>
-                <p className="eyebrow">PROPOSED PILOT</p>
-                <h2>
-                  5–10 buildings.
-                  <br />
-                  Six weeks of retrospective review.
-                </h2>
-              </div>
-              <div>
-                <p>
-                  For professional apartment management companies in Latvia. The
-                  initial 20–100 building target segment is a hypothesis to
-                  validate.
-                </p>
-                <p>
-                  Deliverables: data quality report, review priorities, expert
-                  feedback and a decision about further monitoring. Annual
-                  savings need longer observation and a separate verification
-                  method.
-                </p>
-                <button
-                  className="secondary"
-                  onClick={() => setPage("monitoring")}
-                >
-                  View demo interventions <ArrowRight size={16} />
-                </button>
-              </div>
-            </section>
-            <section className="faq">
-              <h2>Before the first review</h2>
-              {[
-                [
-                  "Does it control heating equipment?",
-                  "No. A manager or qualified expert reviews the findings. The product does not diagnose equipment faults or replace a certified energy audit.",
-                ],
-                [
-                  "What data does it use?",
-                  "Monthly building consumption, heated area and documented weather data. This local demo uses synthetic consumption and weather. No resident-level data is required.",
-                ],
-                [
-                  "Can I upload real customer data here?",
-                  "Use synthetic files in the local demo. A real pilot requires identity configuration, agreements, hosting decisions and expert validation first.",
-                ],
-                [
-                  "How can we contact the founder?",
-                  "Founder contact details have not been supplied. No contact form or email delivery is active in this demo.",
-                ],
-              ].map(([q, a]) => (
-                <details key={q}>
-                  <summary>{q}</summary>
-                  <p>{a}</p>
-                </details>
-              ))}
-            </section>
-          </main>
-          <footer>
-            {brand.name} · Provisional brand, clearance pending · Independent
-            product proposal
-          </footer>
-        </>
+        <Suspense
+          fallback={
+            <main id="main-content" tabIndex={-1}>
+              Loading product…
+            </main>
+          }
+        >
+          <Landing
+            buildings={buildings}
+            busy={busy}
+            onDemo={() => setPage("portfolio")}
+            onOpen={openBuilding}
+            onPage={setPage}
+          />
+        </Suspense>
       ) : (
         <div className="app-shell">
           <aside>
@@ -448,13 +302,152 @@ function App() {
                 <strong>
                   {page === "building"
                     ? (current?.name ?? "Building")
-                    : nav.find(([id]) => id === page)?.[1]}
+                    : (nav.find(([id]) => id === page)?.[1] ??
+                      (
+                        {
+                          buildings: "Buildings",
+                          findings: "Findings",
+                          reports: "Reports",
+                          assistant: "Assistant",
+                        } as Record<string, string>
+                      )[page])}
                 </strong>
               </div>
+              <details className="workspace-views">
+                <summary>Workspace views</summary>
+                <nav aria-label="Additional workspace views">
+                  {(
+                    [
+                      ["buildings", "Buildings"],
+                      ["findings", "Findings"],
+                      ["reports", "Reports"],
+                      ["assistant", "Assistant"],
+                    ] as const
+                  ).map(([id, label]) => (
+                    <a
+                      key={id}
+                      href={`#/${id}`}
+                      aria-current={page === id ? "page" : undefined}
+                      onClick={(event) => {
+                        event.currentTarget
+                          .closest("details")
+                          ?.removeAttribute("open");
+                        setPage(id);
+                      }}
+                    >
+                      {label}
+                    </a>
+                  ))}
+                </nav>
+              </details>
               <span className="workspace-state">
                 <ShieldCheck size={14} /> Isolated synthetic workspace
               </span>
             </div>
+            {page === "buildings" && (
+              <>
+                <Title
+                  eyebrow="PORTFOLIO INVENTORY"
+                  title="Buildings"
+                  subtitle="Inspect the buildings behind the analysis. Missing evidence remains visible."
+                >
+                  <button onClick={() => setPage("import")}>Import data</button>
+                </Title>
+                <p className="period-badge">{period}</p>
+                <BuildingTable
+                  items={buildings.filter((b) => matchesBuilding(b, query))}
+                  query={query}
+                  onQuery={setQuery}
+                  onClear={clearFilters}
+                  period={period}
+                  onOpen={openBuilding}
+                />
+              </>
+            )}
+            {page === "findings" && (
+              <>
+                <Title
+                  eyebrow="ANALYSIS EVIDENCE"
+                  title="Findings"
+                  subtitle="Investigation priorities and data limitations are separate signals."
+                >
+                  <button onClick={() => setPage("portfolio")}>
+                    Change analysis period
+                  </button>
+                </Title>
+                <p className="period-badge">{period}</p>
+                {buildings
+                  .filter((b) => b.status !== "within reference")
+                  .map((b) => (
+                    <section className="panel" key={b.id}>
+                      <Status value={b.status} />
+                      <h2>{b.name}</h2>
+                      <p>{b.reason}</p>
+                      <p>
+                        Observed {fmt(b.observed_kwh)} kWh · Expected{" "}
+                        {b.expected_kwh === null
+                          ? "Insufficient data"
+                          : fmt(b.expected_kwh) + " kWh"}{" "}
+                        · Deviation {pct(b.deviation)}
+                      </p>
+                      <button onClick={() => openBuilding(b.id)}>
+                        Open finding evidence
+                      </button>
+                    </section>
+                  ))}
+                {!buildings.some((b) => b.status !== "within reference") && (
+                  <p>
+                    No findings available. Import and validate monthly data
+                    first.
+                  </p>
+                )}
+              </>
+            )}
+            {page === "reports" && (
+              <>
+                <Title
+                  eyebrow="EXPORT VERIFIED ANALYSIS"
+                  title="Reports"
+                  subtitle="Exports use the applied portfolio period and filters."
+                >
+                  <Downloads />
+                </Title>
+                <section className="panel">
+                  <h2>Current report scope</h2>
+                  <p>
+                    {period} · {filtered.length} buildings
+                  </p>
+                  <p>
+                    Type: {type || "All"} / Data quality: {quality || "All"} /
+                    Status: {status || "All"} / Search: {query || "None"}
+                  </p>
+                  <button
+                    className="secondary"
+                    onClick={() => setPage("portfolio")}
+                  >
+                    Review filters and analysis period
+                  </button>
+                </section>
+                <BuildingTable
+                  items={filtered}
+                  query={query}
+                  onQuery={setQuery}
+                  onClear={clearFilters}
+                  period={period}
+                  onOpen={openBuilding}
+                />
+              </>
+            )}
+            {page === "assistant" && (
+              <>
+                <Title
+                  eyebrow="OPTIONAL CLAUDE"
+                  title="Portfolio assistant"
+                  subtitle="Questions are answered through bounded, authorized application tools."
+                />
+                <PortfolioAssistant range={appliedRange} />
+              </>
+            )}
             {page === "portfolio" && (
               <>
                 <Title
@@ -834,6 +827,18 @@ function App() {
                 </section>
               </>
             )}
+            {page === "building" && current && (
+              <AIWorkbench
+                key={current.id}
+                building={current}
+                range={appliedRange}
+                onTaskSaved={async () => {
+                  await load();
+                  setPage("tasks");
+                  setToast("Approved investigation task saved.");
+                }}
+              />
+            )}
             {page === "import" && (
               <>
                 <Title
@@ -880,6 +885,7 @@ function App() {
                         setFile(e.target.files?.[0] ?? null);
                         setPreview(null);
                         setMapping({});
+                        setMappingDirty(false);
                       }}
                     />
                     <span>{file?.name ?? "No file selected"}</span>
@@ -905,9 +911,10 @@ function App() {
                             {h}
                             <select
                               value={mapping[h] ?? h}
-                              onChange={(e) =>
-                                setMapping({ ...mapping, [h]: e.target.value })
-                              }
+                              onChange={(e) => {
+                                setMapping({ ...mapping, [h]: e.target.value });
+                                setMappingDirty(true);
+                              }}
                             >
                               {[
                                 ...new Set([
@@ -921,9 +928,16 @@ function App() {
                                   "measurement_type",
                                   "includes_dhw",
                                   "source_reference",
+                                  "cost",
+                                  "currency",
+                                  "__ignore__",
                                 ]),
                               ].map((f) => (
-                                <option key={f}>{f}</option>
+                                <option key={f} value={f}>
+                                  {f === "__ignore__"
+                                    ? "Ignore column (not imported)"
+                                    : f}
+                                </option>
                               ))}
                             </select>
                           </label>
@@ -935,6 +949,18 @@ function App() {
                       >
                         Revalidate mapping
                       </button>
+                      {mappingDirty && (
+                        <p role="status" className="notice warning">
+                          Mapping changed. Revalidate before confirming import.
+                        </p>
+                      )}
+                      <AIColumnMapping
+                        preview={preview}
+                        onApply={(suggestions) => {
+                          setMapping({ ...mapping, ...suggestions });
+                          setMappingDirty(true);
+                        }}
+                      />
                     </section>
                     <section className="panel">
                       <h2>Validation result</h2>
@@ -1008,6 +1034,7 @@ function App() {
                       )}
                       <button
                         disabled={
+                          mappingDirty ||
                           !!preview.issues.length ||
                           busy ||
                           (!!preview.conflicts.length && policy === "reject")
@@ -1060,7 +1087,17 @@ function App() {
                     onSubmit={(e) => {
                       e.preventDefault();
                       void run(async () => {
-                        const { id, history, ...body } = task;
+                        const { id } = task;
+                        const body = {
+                          building_id: task.building_id,
+                          title: task.title ?? "",
+                          status: task.status,
+                          assignee: task.assignee,
+                          note: task.note,
+                          technical_action: task.technical_action,
+                          priority: task.priority,
+                          due: task.due,
+                        };
                         await api(
                           id ? `/tasks/${id}` : "/tasks",
                           json(id ? "PUT" : "POST", body),
@@ -1074,6 +1111,16 @@ function App() {
                     <h2 className="full">
                       {task.id ? "Update review" : "Create review task"}
                     </h2>
+                    <label className="full">
+                      Task title (optional)
+                      <input
+                        maxLength={160}
+                        value={task.title ?? ""}
+                        onChange={(e) =>
+                          setTask({ ...task, title: e.target.value })
+                        }
+                      />
+                    </label>
                     <label>
                       Building
                       <select
@@ -1186,7 +1233,12 @@ function App() {
                           <p className="eyebrow">
                             {t.building_id} / {t.priority} PRIORITY
                           </p>
-                          <h2>{t.technical_action}</h2>
+                          <h2>{t.title || t.technical_action}</h2>
+                          {t.title && (
+                            <p style={{ whiteSpace: "pre-line" }}>
+                              {t.technical_action}
+                            </p>
+                          )}
                         </div>
                         <button
                           className="secondary"
@@ -1196,6 +1248,24 @@ function App() {
                         </button>
                       </div>
                       <Status value={t.status} />
+                      {t.ai_draft_id && (
+                        <div className="notice">
+                          <p>
+                            Human-approved Claude draft / analysis{" "}
+                            {t.analysis_version?.slice(0, 12)}
+                          </p>
+                          <p>
+                            Closure evidence: {t.closure_records?.join("; ")}
+                          </p>
+                          <p>Source references: {t.source_ids?.join("; ")}</p>
+                          <button
+                            className="secondary"
+                            onClick={() => openBuilding(t.building_id)}
+                          >
+                            Review current building evidence
+                          </button>
+                        </div>
+                      )}
                       <p>
                         Assigned: {t.assignee} · Due: {t.due ?? "Unscheduled"}
                       </p>
@@ -1470,6 +1540,7 @@ function App() {
                   title="Keep assumptions visible"
                   subtitle="Critical parameter changes are recorded in the tenant audit trail."
                 />
+                <AISettingsPanel />
                 <form
                   className="panel form-grid"
                   onSubmit={(e) => {

@@ -2,7 +2,7 @@
   {
     "route": "/",
     "violations": [],
-    "passes": 16,
+    "passes": 24,
     "incomplete": []
   },
   {
@@ -20,19 +20,19 @@
   {
     "route": "/#/building/SYN-003",
     "violations": [],
-    "passes": 23,
+    "passes": 26,
     "incomplete": []
   },
   {
     "route": "/#/import",
     "violations": [],
-    "passes": 22,
+    "passes": 23,
     "incomplete": []
   },
   {
     "route": "/#/tasks",
     "violations": [],
-    "passes": 20,
+    "passes": 21,
     "incomplete": []
   },
   {
@@ -50,7 +50,43 @@
   {
     "route": "/#/settings",
     "violations": [],
-    "passes": 22,
+    "passes": 23,
+    "incomplete": []
+  },
+  {
+    "route": "/#/buildings",
+    "violations": [],
+    "passes": 27,
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 42
+      }
+    ]
+  },
+  {
+    "route": "/#/findings",
+    "violations": [],
+    "passes": 21,
+    "incomplete": []
+  },
+  {
+    "route": "/#/reports",
+    "violations": [],
+    "passes": 27,
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 42
+      }
+    ]
+  },
+  {
+    "route": "/#/assistant",
+    "violations": [],
+    "passes": 23,
     "incomplete": []
   }
 ]

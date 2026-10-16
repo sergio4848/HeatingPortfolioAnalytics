@@ -33,3 +33,8 @@ Native PDF export may fail with missing #standard-fonts/Helvetica in this runtim
 ## Visual validation
 
 All twelve slide PNGs and five standalone PDF pages were visually inspected. PDF page counts, package integrity, disclosure and methods are recorded in reports/validation.md. Font/native PowerPoint rendering is not proved by structural checks. No private meeting link, password or actual email is included.
+
+
+## 16 October update
+
+Current output: `Portotherm-LIAA-Claude.pptx` and matching PDF. Slide seven shows the actual unconfigured Claude workbench and three concrete assistance features; no live model result is claimed. All twelve slides and five standalone PDF pages were rendered and inspected after the update. Original quality exports remain as prior revisions. Current UI and AI evidence: `reports/claude-update.md`.

@@ -40,5 +40,29 @@
     "viewport": 360,
     "document": 360,
     "body": 360
+  },
+  {
+    "screen": "buildings",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "findings",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "reports",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
+  },
+  {
+    "screen": "assistant",
+    "viewport": 360,
+    "document": 360,
+    "body": 360
   }
 ]

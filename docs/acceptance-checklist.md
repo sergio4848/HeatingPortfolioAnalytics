@@ -28,3 +28,8 @@ Statuses distinguish local demonstration from real-data pilot and production.
 | Production | Operational security/backup/concurrency/retention | Threat model and roadmap | Not production ready |
 
 Numbers describe synthetic software behavior. No actual customer savings, field accuracy, customer traction, support eligibility or funding approval claimed. Execution details and outstanding warnings are in reports/validation.md.
+
+
+## Claude update
+
+Implemented/locally verified optional AI evidence, approval, quotas, sources, landing motion and responsive routes: [current validation](../reports/claude-update.md). Live provider/model access and real-data pilot gates remain open; synthetic tests are not field proof.

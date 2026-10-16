@@ -36,10 +36,10 @@
     "title": "A documented review workflow",
     "kicker": "HOW IT WORKS",
     "body": [
-      "01  Import monthly CSV or XLSX records",
-      "02  Check quality and compare with own history",
-      "03  Review the reason and assign a task",
-      "04  Record interventions and export evidence"
+      "01  Import and validate monthly CSV/XLSX",
+      "02  Calculate a weather reference with the engine",
+      "03  Review optional Claude explanations and drafts",
+      "04  Explicitly approve tasks and track evidence"
     ],
     "note": "Ardışık akışı anlat. Yeni sensör veya otomatik ısıtma kontrolü zorunlu değil. Gerçek hava kaynağının pilotta doğrulanması gerekiyor.",
     "layout": "process"
@@ -67,17 +67,17 @@
     "layout": "building"
   },
   {
-    "title": "Alternatives already exist",
-    "kicker": "DIFFERENTIATION TO TEST",
+    "title": "Claude helps with the review",
+    "kicker": "OPTIONAL / BACKEND ONLY / USER APPROVED",
     "body": [
-      "Spreadsheets and specialist review",
-      "Energy management: Kiona Energinet, EG EnerKey",
-      "Operational optimization: Danfoss Leanheat, gridX",
-      "Our hypothesis: a narrow monthly import-to-review workflow can be useful without a control project."
+      "Suggested column mapping",
+      "Evidence-backed explanations",
+      "Investigation task drafts",
+      "The engine calculates. A person approves."
     ],
-    "note": "Resmi kaynaklar 15 Ekim 2026 okundu: kiona.com/products/energinet; egsoftware.com/global/energy-management-sustainability/eg-enerkey; danfoss.com Leanheat Building; gridx.ai/product. Ayrıntı docs/research/alternatives.md. Üstünlük veya bilinmeyen özellik yokluğu iddia etme.",
-    "layout": "alternatives",
-    "source": "Official vendor pages, accessed 15 Oct 2026. Full links: docs/research/alternatives.md"
+    "note": "Claude anahtari backend ortaminda tutulur. Kolon onerisi normal parser kontrolunden ve kullanici onayindan gecer. Aciklama metrik ve kaynak kimliklerine baglidir. Gorev taslagi duzenlenir, analiz surumu tekrar kontrol edilerek acik onayla kaydedilir. Ekran gercek sentetik uygulamanin anahtarsiz durumudur. Canli API testi bu teslimde yapilmadi.",
+    "layout": "ai",
+    "source": "Actual local synthetic screen; no live API result claimed. Architecture: docs/technical/ai-architecture.md"
   },
   {
     "title": "A six-week retrospective pilot",
@@ -111,9 +111,9 @@
     "kicker": "READINESS",
     "body": [
       "Demonstrated locally",
-      "Synthetic import, quality checks, weather reference, review tasks, interventions and evidence reports.",
+      "Synthetic engine, imports, evidence reports, source documents and tested consent/approval boundaries.",
       "Pending before a real pilot",
-      "Verified weather input, deployed identity flow, agreements, hosting and independent expert review."
+      "Live Claude verification, real weather, identity deployment, data agreements and independent expert review."
     ],
     "note": "Demo hazır olmak pilot veya üretim hazır demek değil. Docker Compose ve PostgreSQL yerelde çalıştırıldı; sağlık, migration/seed ve temel tarayıcı akışı geçti. Gerçek kimlik sağlayıcı staging testi bekliyor.",
     "layout": "readiness"

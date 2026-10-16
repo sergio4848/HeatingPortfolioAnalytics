@@ -4,7 +4,7 @@
 
 ## Start in five minutes
 
-Requirements: Python 3.11 and Node 24; internet for the initial dependency installation. Once installed, the local demo works offline.
+Requirements: Python 3.11 and Node 24; internet for the initial dependency installation. Once installed, the core local demo works offline; optional Claude requests need network access.
 
 Windows PowerShell, from repository root:
 
@@ -69,7 +69,7 @@ Set BROWSER_EXECUTABLE to an existing Chromium binary if necessary. Browser test
 
 ## Deliverables and reproduction
 
-- [12-slide editable presentation](presentations/exports/Portotherm-LIAA-quality.pptx), [matching PDF](presentations/exports/Portotherm-LIAA-quality.pdf).
+- [12-slide editable presentation](presentations/exports/Portotherm-LIAA-Claude.pptx), [matching PDF](presentations/exports/Portotherm-LIAA-Claude.pdf).
 - [One-page overview](presentations/exports/Portotherm-One-Pager.pdf), [three-page pilot proposal](presentations/exports/Portotherm-Pilot-Proposal.pdf), [brand guide](presentations/exports/Portotherm-Brand-Guide.pdf).
 - [SVG/PNG/icons and identity guide](packages/brand/README.md), central [brand configuration](packages/brand/brand.json).
 - [English/Turkish pitch](docs/meeting/pitch-en-tr.md), [Turkish slide notes](docs/meeting/speaker-notes-tr.md), [24 Q&A](docs/meeting/questions-and-answers.md), [demo/backup flow](docs/meeting/demo-script.md), [meeting questions](docs/meeting/meeting-notes.md), [unsent email draft](docs/meeting/follow-up-email-draft.md).
@@ -88,3 +88,13 @@ Founder identity/contact remains blank in [editable profile](docs/meeting/founde
 ## Design and engineering revision
 
 Self-hosted Inter, consistent semantic theme, accessible reset confirmation, typed API/errors and lazy charts. Reference selection and concrete adoption: [engineering assessment](docs/research/engineering-references.md). Executed validation: [test evidence](reports/validation.md). Git delivery and CI status: [STATUS](STATUS.md).
+
+## Optional Claude and product update / 16 October 2026
+
+The landing page now uses scoped GSAP/ScrollTrigger and a Lenis ticker, real product captures and an accessible horizontal gallery; mobile/reduced-motion use normal vertical content. Dashboard routes include Buildings, Findings, Reports and a read-only Assistant under Workspace views. Existing analysis/framework/brand remain.
+
+Claude features are backend-only and require configuration, organization opt-in and request approval: column mapping suggestions, evidence-linked explanations, dated maintenance summaries, editable investigation drafts and bounded portfolio tools. Manual operations and numerical analysis work without a key. Text notes/text PDFs stay local until an approved external request. AI cannot save tasks; explicit approval rechecks source/analysis version and prevents duplicate saves.
+
+Configure `AI_ENABLED=true`, `ANTHROPIC_API_KEY` (backend only) and optional `ANTHROPIC_MODEL`; restart backend, then enable organization AI in Settings. Defaults/budgets are in `.env.example`. Manual Python startup requires exported environment variables; Compose reads `.env`. Live check: `AI_LIVE_TEST_CONSENT=synthetic-only python scripts/live_ai_check.py` (PowerShell: set `$env:AI_LIVE_TEST_CONSENT='synthetic-only'` first). This is an opt-in paid call, not part of CI. No live provider test is claimed in this delivery; key was unavailable.
+
+[AI architecture and official sources](docs/technical/ai-architecture.md), [four design sources](docs/design/references.md), [design tokens](docs/design/system.md), [motion lifecycle](docs/design/motion.md), [update test evidence](reports/claude-update.md). Twenty-five deterministic AI contract evaluations live in `tests/fixtures/ai-evaluations.json`; mocks and optional live checks are separate.

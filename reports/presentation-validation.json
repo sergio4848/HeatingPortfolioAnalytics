@@ -1,7 +1,7 @@
 {
   "schemaVersion": "presentation-finalization.v1",
-  "finalSha256": "7b365b503a8bfac5911d95d7329e4e624e6af09eaa957d98a7159311f60bf51b",
-  "byteCount": 282446,
+  "finalSha256": "8f3e0ad9fd6726a1be946de3bc7241de4a497a23ff622d3da878b16e7fe32fa0",
+  "byteCount": 343622,
   "packageIntegrity": {
     "chart_count": 0,
     "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
@@ -75,9 +75,9 @@
     "performed": true,
     "passed": true,
     "slideCount": 12,
-    "sha256": "7b365b503a8bfac5911d95d7329e4e624e6af09eaa957d98a7159311f60bf51b",
+    "sha256": "8f3e0ad9fd6726a1be946de3bc7241de4a497a23ff622d3da878b16e7fe32fa0",
     "runtimeNodeModules": "C:\\Users\\serge\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules",
-    "nodeExecutable": "C:\\Users\\serge\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe"
+    "nodeExecutable": "C:\\Program Files\\nodejs\\node.exe"
   },
   "nativeTableArithmetic": {
     "performed": true,
@@ -103,7 +103,7 @@
     "native_chart_count": 0,
     "native_powerpoint_verified": false,
     "passed": true,
-    "presentation_sha256": "7b365b503a8bfac5911d95d7329e4e624e6af09eaa957d98a7159311f60bf51b",
+    "presentation_sha256": "8f3e0ad9fd6726a1be946de3bc7241de4a497a23ff622d3da878b16e7fe32fa0",
     "schema_version": "presentation-native-chart-titles.v1",
     "slide_count": 12,
     "source_text_emitted": false,

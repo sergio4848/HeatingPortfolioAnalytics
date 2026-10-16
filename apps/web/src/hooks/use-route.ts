@@ -6,7 +6,11 @@ export type Page =
   | "import"
   | "tasks"
   | "monitoring"
-  | "settings";
+  | "settings"
+  | "buildings"
+  | "findings"
+  | "reports"
+  | "assistant";
 const pages: Page[] = [
   "home",
   "portfolio",
@@ -15,6 +19,10 @@ const pages: Page[] = [
   "tasks",
   "monitoring",
   "settings",
+  "buildings",
+  "findings",
+  "reports",
+  "assistant",
 ];
 function readRoute() {
   const [raw, id] = window.location.hash.replace(/^#\/?/, "").split("/");

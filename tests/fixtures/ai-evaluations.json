@@ -1,0 +1,169 @@
+[
+  {
+    "id": "prose-plain",
+    "kind": "prose",
+    "text": "Review the weather reference.",
+    "valid": true
+  },
+  {
+    "id": "prose-numeric",
+    "kind": "prose",
+    "text": "Use rose by 25 percent.",
+    "valid": false
+  },
+  {
+    "id": "prose-numeric_word",
+    "kind": "prose",
+    "text": "Use rose by twenty percent.",
+    "valid": false
+  },
+  {
+    "id": "prose-certainty",
+    "kind": "prose",
+    "text": "A fault is definitely present.",
+    "valid": false
+  },
+  {
+    "id": "prose-diagnosis",
+    "kind": "prose",
+    "text": "This diagnoses a valve fault.",
+    "valid": false
+  },
+  {
+    "id": "prose-savings",
+    "kind": "prose",
+    "text": "This will save energy.",
+    "valid": false
+  },
+  {
+    "id": "prose-guarantee",
+    "kind": "prose",
+    "text": "Guaranteed savings.",
+    "valid": false
+  },
+  {
+    "id": "prose-confidence",
+    "kind": "prose",
+    "text": "A confidence score is available.",
+    "valid": false
+  },
+  {
+    "id": "mapping-energy",
+    "kind": "mapping",
+    "column": "energy",
+    "target": "heat_consumption",
+    "valid": true
+  },
+  {
+    "id": "mapping-money",
+    "kind": "mapping",
+    "column": "invoice_amount",
+    "target": "heat_consumption",
+    "valid": false
+  },
+  {
+    "id": "mapping-cost",
+    "kind": "mapping",
+    "column": "cost_eur",
+    "target": "heat_consumption",
+    "valid": false
+  },
+  {
+    "id": "mapping-counter",
+    "kind": "mapping",
+    "column": "cumulative_reading",
+    "target": "heat_consumption",
+    "valid": false
+  },
+  {
+    "id": "mapping-bill",
+    "kind": "mapping",
+    "column": "bill_total",
+    "target": "heat_consumption",
+    "valid": false
+  },
+  {
+    "id": "mapping-eur",
+    "kind": "mapping",
+    "column": "EUR",
+    "target": "heat_consumption",
+    "valid": false
+  },
+  {
+    "id": "mapping-price",
+    "kind": "mapping",
+    "column": "price",
+    "target": "heat_consumption",
+    "valid": false
+  },
+  {
+    "id": "mapping-vat",
+    "kind": "mapping",
+    "column": "vat",
+    "target": "heat_consumption",
+    "valid": false
+  },
+  {
+    "id": "mapping-cost-field",
+    "kind": "mapping",
+    "column": "invoice_amount",
+    "target": "cost",
+    "valid": true
+  },
+  {
+    "id": "mapping-unit",
+    "kind": "mapping",
+    "column": "unit",
+    "target": "heat_unit",
+    "valid": true
+  },
+  {
+    "id": "mapping-date",
+    "kind": "mapping",
+    "column": "from",
+    "target": "period_start",
+    "valid": true
+  },
+  {
+    "id": "mapping-unknown-target",
+    "kind": "mapping",
+    "column": "energy",
+    "target": "unrestricted_sql",
+    "valid": false
+  },
+  {
+    "id": "mapping-unmapped",
+    "kind": "mapping",
+    "column": "misc",
+    "target": "unmapped",
+    "valid": true
+  },
+  {
+    "id": "reference-known",
+    "kind": "reference",
+    "metric": "deviation",
+    "source": "analysis",
+    "valid": true
+  },
+  {
+    "id": "reference-foreign-source",
+    "kind": "reference",
+    "metric": "deviation",
+    "source": "foreign:document",
+    "valid": false
+  },
+  {
+    "id": "reference-madeup-metric",
+    "kind": "reference",
+    "metric": "savings",
+    "source": "analysis",
+    "valid": false
+  },
+  {
+    "id": "reference-empty-source",
+    "kind": "reference",
+    "metric": "deviation",
+    "source": null,
+    "valid": false
+  }
+]

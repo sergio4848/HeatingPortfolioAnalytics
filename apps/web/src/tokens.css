@@ -1,0 +1,38 @@
+:root {
+  --color-ink: #142b3d;
+  --color-accent: #006d77;
+  --color-paper: #f4f7f8;
+  --color-surface: #ffffff;
+  --color-muted: #526776;
+  --color-line: #dce5e9;
+  --color-warning: #80520b;
+  --color-warning-surface: #fff0d6;
+  --font-ui: "Inter Variable", Inter, system-ui, sans-serif;
+  --font-data: ui-monospace, Consolas, monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-20: 80px;
+  --radius-control: 6px;
+  --radius-panel: 8px;
+  --motion-fast: 140ms;
+  --motion-ui: 220ms;
+  --motion-reveal: 650ms;
+  --motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --teal: var(--color-accent);
+  --foreground: var(--color-ink);
+  --surface: var(--color-surface);
+  --muted: var(--color-muted);
+  --border: var(--color-line);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-ui: 0ms;
+    --motion-reveal: 0ms;
+  }
+}

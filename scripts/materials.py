@@ -43,7 +43,7 @@ def footer(c, doc):
     c.line(42, 43, 553, 43)
     c.setFont("Helvetica", 8)
     c.setFillColor(HexColor("#526776"))
-    c.drawString(42, 29, "Portotherm / Provisional brand / Discussion proposal / 15 October 2026")
+    c.drawString(42, 29, "Portotherm / Provisional brand / Discussion proposal / 16 October 2026")
     c.drawRightString(553, 29, str(doc.page))
 
 
@@ -76,11 +76,11 @@ def one_pager():
         ),
         (
             "The workflow",
-            "Import CSV/XLSX; validate units, area and periods; compare with the building's own history and weather; review explanations; assign follow-up and export evidence.",
+            "Import and validate CSV/XLSX. The engine computes the weather reference. Optional Claude suggests column mapping, evidence-backed explanations and investigation task drafts. A person reviews and explicitly approves tasks.",
         ),
         (
             "A reviewable local demonstration",
-            f"{STATS['buildings']} synthetic buildings, 33 months, {STATS['usable_reference']} usable references and {STATS['investigation']} investigation priority. Synthetic demo data - not measured customer results. The same engine drives screens and reports.",
+            f"{STATS['buildings']} synthetic buildings, 33 months, {STATS['usable_reference']} usable references and {STATS['investigation']} investigation priority. Synthetic demo data - not measured customer results. The same engine drives screens and reports. Claude requires backend configuration and approved data transfer; live API verification is pending.",
         ),
         (
             "The proposed pilot",
@@ -128,7 +128,7 @@ def pilot():
         ),
         para("Limits", "Heading2"),
         para(
-            "The local demonstration uses synthetic consumption and weather. It does not establish field accuracy, customer outcomes or annual savings. Intervention effects may require a further heating season and separate verification."
+            "The local demonstration uses synthetic consumption and weather. It does not establish field accuracy, customer outcomes or annual savings. Intervention effects may require a further heating season and separate verification. Optional Claude mapping, explanations and task drafts require organization permission, per-request transfer approval and human review. The engine supplies numbers. Live API verification remains pending."
         ),
         PageBreak(),
         para("The six-week work plan", "Hero"),
@@ -211,7 +211,7 @@ def brand_guide():
         ),
         para("Copy and licenses", "Heading2"),
         para(
-            "Slogan: See where to investigate. Use investigation priority, weather reference and data review. Avoid guaranteed savings and real-time claims. Lucide icons ISC; React, Vite and Recharts MIT. Inter font SIL OFL-1.1; proprietary system fonts remain vendor licensed. Repository license decision remains with owner. Full copy, source links and usage detail: packages/brand/README.md."
+            "Slogan: See where to investigate. Use investigation priority, weather reference and data review. Avoid guaranteed savings and real-time claims. Lucide icons ISC; React, Vite and Recharts MIT. Inter font SIL OFL-1.1; proprietary system fonts remain vendor licensed. GSAP uses its Standard License; Lenis is MIT. Motion is landing-only, native on mobile/reduced motion. Central tokens: apps/web/src/tokens.css. Repository license decision remains with owner. Full copy, source links and usage detail: packages/brand/README.md."
         ),
     ]
     write("Portotherm-Brand-Guide.pdf", story)

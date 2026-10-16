@@ -10,9 +10,13 @@ const screens = [
   ["tasks", "/#/tasks"],
   ["interventions", "/#/monitoring"],
   ["settings", "/#/settings"],
+  ["buildings", "/#/buildings"],
+  ["findings", "/#/findings"],
+  ["reports", "/#/reports"],
+  ["assistant", "/#/assistant"],
 ] as const;
 
-for (const width of [1440, 1024, 390, 360]) {
+for (const width of [1440, 1024, 768, 390, 360]) {
   test(`all screens fit the viewport at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });
     await mkdir("../../reports/ui-review", { recursive: true });

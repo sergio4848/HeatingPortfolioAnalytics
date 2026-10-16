@@ -25,6 +25,7 @@ from .db import engine, Entity, seed, get, put, all_items
 from .analysis import analyze, VERSION, DISCLOSURE
 from .imports import read_upload, safe_cell, MAX_BYTES
 from .body_limit import BodyLimit
+from .ai_routes import create_router
 
 ROOT = Path(__file__).resolve().parents[2]
 MODE = os.getenv("APP_MODE", "demo")
@@ -273,6 +274,7 @@ def building(
 class TaskIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     building_id: str = Field(max_length=80)
+    title: str = Field(default="", max_length=160)
     status: Literal["new", "reviewing", "action planned", "monitoring", "closed"] = "new"
     assignee: str = Field(default="Demo analyst role", max_length=100)
     note: str = Field(default="", max_length=2000)
@@ -310,7 +312,8 @@ def update_task(id: str, body: TaskIn, c=Depends(writer), s: Session = Depends(d
     if not task or task["building_id"] != body.building_id:
         raise HTTPException(404, "Task not found")
     task = dict(
-        body.model_dump(mode="json"),
+        task,
+        **body.model_dump(mode="json"),
         id=id,
         history=task["history"]
         + [dict(at=datetime.now(timezone.utc).isoformat(), status=body.status, note=body.note)],
@@ -679,6 +682,7 @@ def report(
     )
 
 
+app.include_router(create_router(db, context, writer, results, dates, audit))
 app.add_middleware(BodyLimit)
 
 dist = ROOT / "apps/web/dist"

@@ -1,0 +1,68 @@
+[
+  {
+    "screen": "home",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "portfolio",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "building",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "import",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "tasks",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "interventions",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "settings",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "buildings",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "findings",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "reports",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  },
+  {
+    "screen": "assistant",
+    "viewport": 768,
+    "document": 768,
+    "body": 768
+  }
+]

@@ -1,0 +1,5 @@
+GSAP 3.15.0 is distributed under its Standard License, not MIT.
+Official terms: https://gsap.com/community/standard-license/
+Source: https://github.com/greensock/GSAP
+Review date: 2026-10-16. Preserve original package copyright/license notices.
+The package files retain the upstream license header and documentation.

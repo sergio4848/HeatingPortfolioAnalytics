@@ -40,5 +40,29 @@
     "viewport": 1024,
     "document": 1024,
     "body": 1024
+  },
+  {
+    "screen": "buildings",
+    "viewport": 1024,
+    "document": 1024,
+    "body": 1024
+  },
+  {
+    "screen": "findings",
+    "viewport": 1024,
+    "document": 1024,
+    "body": 1024
+  },
+  {
+    "screen": "reports",
+    "viewport": 1024,
+    "document": 1024,
+    "body": 1024
+  },
+  {
+    "screen": "assistant",
+    "viewport": 1024,
+    "document": 1024,
+    "body": 1024
   }
 ]

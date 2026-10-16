@@ -12,3 +12,8 @@ Install/build beforehand. No internet needed after install. Keep reports/screens
 
 ## Türkçe hazırlık
 Sentetik veriyi ilk cümlede belirt. Soğuk hava ile sapmayı ve yetersiz veri durumunu göster. İnceleme kararını insan verir. Altı haftalık geriye dönük pilot yıllık tasarrufu kanıtlamaz. Toplantı erişim bilgilerini repoya koyma.
+
+
+## Optional Claude demonstration
+
+Show Settings configuration/organization controls, then Imports > Suggested column mapping and Building detail > Explain, verify, then decide. Show local dated maintenance sources even without a key. Explain that the engine computes every metric, Claude suggests/explains, and a person approves the task. If backend is unconfigured, show the disabled state; do not narrate a mocked response as live. Open Workspace views > Assistant to explain read-only tool limits. Synthetic demonstration does not establish field accuracy.

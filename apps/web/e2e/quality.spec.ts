@@ -103,6 +103,10 @@ for (const width of [1440, 390]) {
       "/#/tasks",
       "/#/monitoring",
       "/#/settings",
+      "/#/buildings",
+      "/#/findings",
+      "/#/reports",
+      "/#/assistant",
     ]) {
       await page.goto(route);
       await expect(page.locator(".loading")).toHaveCount(0);
